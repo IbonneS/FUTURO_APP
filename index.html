@@ -4,1156 +4,4762 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FUTURO | Tu vida, tu elección</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-:root{color-scheme:dark;--fg:#fff;
---pink:#ff2e9a;--purple:#7c3aff;--blue:#2e7dff;--cyan:#00e0ff;--orange:#ff8a1e;--lime:#c6ff3d;--green:#12e28a}
+
+:root{
+color-scheme:dark;
+--fg:#fff;
+--pink:#ff2e9a;
+--purple:#7c3aff;
+--blue:#2e7dff;
+--cyan:#00e0ff;
+--orange:#ff8a1e;
+--lime:#c6ff3d;
+--green:#12e28a
+}
+
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{font-family:'Inter',sans-serif;color:var(--fg);position:relative;overflow-x:hidden;
+
+html,body{
+height:100%;
+margin:0
+}
+
+body{
+font-family:'Inter',sans-serif;
+color:var(--fg);
+position:relative;
+overflow-x:hidden;
 background:#070315;
-padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);
-min-height:100%;-webkit-tap-highlight-color:transparent}
-body::before{content:'';position:fixed;inset:0;z-index:-2;
+padding-top:env(safe-area-inset-top,0);
+padding-bottom:env(safe-area-inset-bottom,0);
+min-height:100%;
+-webkit-tap-highlight-color:transparent
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+z-index:-2;
 background:
 radial-gradient(circle at 12% 8%,rgba(255,46,154,.30),transparent 32%),
 radial-gradient(circle at 88% 15%,rgba(0,224,255,.22),transparent 30%),
 radial-gradient(circle at 25% 90%,rgba(124,58,255,.30),transparent 35%),
 radial-gradient(circle at 90% 85%,rgba(255,138,30,.20),transparent 30%),
 linear-gradient(160deg,#0a0420 0%,#150a30 45%,#06031a 100%);
-background-size:180% 180%;animation:drift 18s ease-in-out infinite}
-body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
-background:linear-gradient(to bottom,rgba(255,255,255,.025),transparent 22%,rgba(0,0,0,.16));
-}
-@keyframes drift{0%,100%{background-position:0% 0%}50%{background-position:100% 60%}}
-.wrap{width:min(820px,100%);margin:0 auto;padding:30px 22px 125px;position:relative;z-index:1}
-button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
-button,input,select{font:inherit}
-
-.btn{width:100%;border:none;border-radius:16px;padding:15px 20px;min-height:50px;font-weight:800;font-size:15px;
-background:linear-gradient(135deg,var(--pink),var(--purple) 55%,var(--blue));color:#fff;transition:.2s;
-box-shadow:0 6px 22px rgba(180,40,220,.35)}
-.btn:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 10px 30px rgba(255,46,154,.45)}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn-outline{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.18);box-shadow:none}
-.row{display:flex;gap:12px}
-.row>*{flex:1}
-.logo{font-size:34px;font-weight:900;letter-spacing:-1px;
-background:linear-gradient(90deg,#fff,#d9c8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo span{background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
-.tagline{color:#b7a6e0;font-size:13px;font-weight:600}
-.page-title{font-size:32px;font-weight:900;letter-spacing:-1.5px;margin:20px 0 4px}
-.page-subtitle{color:#b6a9d9;font-size:15px;margin-bottom:22px}
-.card{background:linear-gradient(160deg,rgba(35,20,60,.75),rgba(15,10,30,.85));
-border:1px solid rgba(255,255,255,.10);border-radius:22px;
-padding:22px;margin-bottom:16px;box-shadow:0 12px 35px rgba(0,0,0,.35);
-backdrop-filter:blur(6px);transition:.2s}
-.card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
-.card:active{transform:translateY(0)}
-.card-blue{background:radial-gradient(circle at top right,rgba(0,224,255,.28),transparent 50%),linear-gradient(160deg,rgba(20,30,70,.85),rgba(10,12,35,.9))}
-.card-orange{background:radial-gradient(circle at top right,rgba(255,138,30,.28),transparent 50%),linear-gradient(160deg,rgba(60,30,15,.85),rgba(25,12,10,.9))}
-.card-purple{background:radial-gradient(circle at top right,rgba(255,46,154,.26),transparent 50%),linear-gradient(160deg,rgba(50,15,60,.85),rgba(20,8,30,.9))}
-.metric{font-size:27px;font-weight:900;
-background:linear-gradient(90deg,#fff,#e6d8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.metric-label{color:#b6a9d9;font-size:12px;font-weight:700;letter-spacing:.5px}
-.big-number{font-size:44px;font-weight:900;
-background:linear-gradient(90deg,var(--cyan),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
-.small-muted{color:#a99cc9;font-size:13px}
-.hero{border-radius:28px;padding:34px 26px;margin-bottom:20px;border:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden;
-background:radial-gradient(circle at 85% 10%,rgba(0,224,255,.30),transparent 40%),
-radial-gradient(circle at 10% 100%,rgba(255,46,154,.25),transparent 40%),
-linear-gradient(135deg,#1a0c3d,#0a0620);box-shadow:0 15px 45px rgba(90,20,140,.25)}
-.hero-kicker{color:var(--cyan);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2.5px}
-.hero-title{font-size:39px;line-height:1.08;font-weight:900;margin:10px 0}
-.hero-title span{background:linear-gradient(90deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-text{color:#c3b6e6;font-size:15px;line-height:1.65}
-.avatar{width:112px;height:112px;border-radius:50%;background:linear-gradient(145deg,var(--pink),var(--purple) 60%,var(--blue));
-display:flex;align-items:center;justify-content:center;font-size:58px;margin:0 auto 10px;
-border:3px solid rgba(255,255,255,.35);box-shadow:0 0 50px rgba(255,46,154,.35)}
-.progress-container{background:rgba(255,255,255,.08);height:11px;border-radius:20px;overflow:hidden;margin:12px 0}
-.progress-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--pink),var(--cyan))}
-.story{min-height:440px;border-radius:26px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;
-border:1px solid rgba(255,255,255,.12);
-background:radial-gradient(circle at 80% 15%,rgba(255,138,30,.35),transparent 35%),linear-gradient(150deg,#2a1050,#0c0620)}
-.story-label{color:var(--orange);font-size:12px;font-weight:900;letter-spacing:2px}
-.story-question{font-size:29px;font-weight:900;line-height:1.2;margin-top:14px}
-.badge{display:inline-block;background:rgba(0,224,255,.15);color:#7be9ff;padding:6px 12px;border-radius:50px;
-font-size:12px;font-weight:800;margin:3px 4px 3px 0;border:1px solid rgba(0,224,255,.25)}
-.badge-orange{background:rgba(255,138,30,.15);color:#ffb266;border-color:rgba(255,138,30,.3)}
-.chat-user{background:linear-gradient(135deg,var(--purple),var(--blue));border-radius:18px 18px 4px 18px;padding:13px 16px;margin:10px 0 10px 18%;font-weight:600}
-.chat-ai{background:rgba(255,255,255,.06);border-radius:18px 18px 18px 4px;padding:13px 16px;margin:10px 18% 10px 0;
-border:1px solid rgba(255,255,255,.1)}
-.field{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);
-background:rgba(20,10,40,.6);color:#fff;font-size:14px;margin:6px 0 14px}
-.field:focus{outline:none;border-color:var(--pink)}
-.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:linear-gradient(135deg,var(--green),#0aa869);color:#03130a;
-padding:12px 22px;border-radius:14px;font-weight:800;font-size:14px;box-shadow:0 10px 30px rgba(20,220,140,.4);
-opacity:0;pointer-events:none;transition:.3s;z-index:50;text-align:center;max-width:90%}
-.toast.show{opacity:1;bottom:100px}
-.alert{border-radius:14px;padding:13px 16px;font-size:13px;margin:14px 0;border:1px solid}
-.alert-warn{background:rgba(255,180,30,.12);color:#ffd27a;border-color:rgba(255,180,30,.3)}
-.alert-info{background:rgba(0,224,255,.10);color:#8ee9ff;border-color:rgba(0,224,255,.3)}
-.alert-ok{background:rgba(18,226,138,.12);color:#7cf0bb;border-color:rgba(18,226,138,.3)}
-/* ===== NAVEGACIÓN APP ===== */
-.nav{
-  position:fixed;
-  left:50%;
-  bottom:14px;
-  transform:translateX(-50%);
-  width:min(1120px,calc(100% - 28px));
-  padding:10px;
-  display:grid;
-  grid-template-columns:repeat(8,minmax(0,1fr));
-  gap:8px;
-  background:rgba(8,4,22,.94);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:24px;
-  box-shadow:0 18px 50px rgba(0,0,0,.48),0 0 35px rgba(124,58,255,.12);
-  z-index:40;
-}
-.nav button{
-  min-height:72px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.075);
-  color:#9d91bb;
-  border-radius:17px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  padding:8px 4px;
-  font-size:27px;
-  transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease;
-}
-.nav button:hover{
-  transform:translateY(-3px);
-  color:#fff;
-  background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.18);
-}
-.nav button:active{transform:scale(.96)}
-.nav button.active{
-  color:#fff;
-  background:linear-gradient(135deg,rgba(255,46,154,.34),rgba(124,58,255,.34),rgba(0,224,255,.20));
-  border-color:rgba(255,255,255,.24);
-  box-shadow:0 7px 22px rgba(124,58,255,.24),inset 0 0 22px rgba(255,255,255,.035);
-}
-.nav span{font-size:11px;font-weight:800;line-height:1}
-select.field{appearance:none}
-h2,h3{margin:10px 0 6px}
-
-/* ===== PRESENTACIÓN EN PC ===== */
-@media(min-width:901px){
-  .wrap{padding-top:38px}
-  .hero{padding:40px 30px}
-  .card{padding:24px}
-  .page-title{font-size:34px}
+background-size:180% 180%;
+animation:drift 18s ease-in-out infinite
 }
 
-/* ===== TABLET ===== */
-@media(max-width:900px){
-  .nav{
-    width:calc(100% - 20px);
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:7px;
-    bottom:10px;
-    border-radius:21px;
-  }
-  .nav button{min-height:66px}
-  .nav span{font-size:10px}
+body::after{
+content:'';
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+background:
+linear-gradient(
+to bottom,
+rgba(255,255,255,.025),
+transparent 22%,
+rgba(0,0,0,.16)
+)
 }
 
-/* ===== CELULAR ===== */
-@media(max-width:600px){
-  .wrap{
-    width:100%;
-    padding:22px 14px 170px;
-  }
-  .hero{
-    padding:28px 20px;
-    border-radius:23px;
-  }
-  .hero-title{font-size:30px}
-  .page-title{font-size:27px}
-  .card{padding:19px;border-radius:19px}
-  .row{flex-wrap:wrap}
-  .row>*{min-width:0}
-  .nav{
-    width:calc(100% - 12px);
-    bottom:6px;
-    padding:7px;
-    gap:6px;
-    border-radius:19px;
-  }
-  .nav button{
-    min-height:60px;
-    border-radius:14px;
-    font-size:23px;
-    padding:6px 2px;
-  }
-  .nav span{font-size:9px}
+@keyframes drift{
+0%,100%{background-position:0% 0%}
+50%{background-position:100% 60%}
 }
 
-/* ===== CELULAR PEQUEÑO ===== */
-@media(max-width:360px){
-  .wrap{padding-left:11px;padding-right:11px}
-  .nav button{
-    min-height:56px;
-    font-size:20px;
-  }
-  .nav span{font-size:8px}
+.wrap{
+width:min(820px,100%);
+margin:0 auto;
+padding:30px 22px 125px;
+position:relative;
+z-index:1
 }
 
-/* =========================================================
-   FUTURO APP UI — V2
-   Visual layer only: mantiene la lógica y JavaScript existentes.
-   ========================================================= */
-
-:root{
-  --app-bg:#070315;
-  --glass:rgba(20,12,42,.72);
-  --glass-strong:rgba(15,8,32,.90);
-  --line:rgba(255,255,255,.11);
-  --line-soft:rgba(255,255,255,.07);
-  --muted:#a99dcc;
-  --shadow:0 18px 55px rgba(0,0,0,.34);
+button,input,select{
+font:inherit
 }
 
-/* Contenedor de aplicación en escritorio */
-@media(min-width:901px){
-  body{
-    background:#03020b;
-  }
-
-  body::before{
-    opacity:.78;
-  }
-
-  #app{
-    width:min(820px,calc(100vw - 40px));
-    margin:18px auto 0;
-    min-height:calc(100vh - 160px);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:32px;
-    background:linear-gradient(180deg,rgba(16,8,35,.30),rgba(7,3,20,.16));
-    box-shadow:0 30px 90px rgba(0,0,0,.30);
-    overflow:hidden;
-  }
+button{
+font-family:inherit;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent
 }
 
-/* Barra superior más limpia */
-.logo{
-  font-size:32px;
-  letter-spacing:-1.5px;
-  text-shadow:0 0 30px rgba(255,46,154,.18);
-}
-
-.tagline{
-  margin-top:2px;
-  letter-spacing:.2px;
-}
-
-/* Hero: más profundidad y jerarquía */
-.hero{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  right:-70px;
-  bottom:-85px;
-  border-radius:50%;
-  background:rgba(124,58,255,.22);
-  filter:blur(20px);
-  z-index:-1;
-}
-
-.hero-kicker{
-  display:inline-flex;
-  align-items:center;
-  padding:7px 10px;
-  border-radius:999px;
-  background:rgba(0,224,255,.08);
-  border:1px solid rgba(0,224,255,.16);
-}
-
-.hero-text{
-  max-width:620px;
-}
-
-/* Tarjetas */
-.card{
-  box-shadow:var(--shadow);
-}
-
-.card + .card{
-  margin-top:0;
-}
-
-.metric{
-  font-size:29px;
-}
-
-.metric-label{
-  margin-top:4px;
-}
-
-/* Botones principales */
 .btn{
-  min-height:52px;
-  letter-spacing:.15px;
+width:100%;
+border:none;
+border-radius:16px;
+padding:15px 20px;
+min-height:50px;
+font-weight:800;
+font-size:15px;
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple) 55%,
+var(--blue)
+);
+color:#fff;
+transition:.2s;
+box-shadow:0 6px 22px rgba(180,40,220,.35)
+}
+
+.btn:hover{
+transform:translateY(-2px) scale(1.01);
+box-shadow:0 10px 30px rgba(255,46,154,.45)
+}
+
+.btn:active{
+transform:translateY(0) scale(.98)
 }
 
 .btn-outline{
-  background:rgba(255,255,255,.045);
+background:rgba(255,255,255,.06);
+border:1.5px solid rgba(255,255,255,.18);
+box-shadow:none
 }
 
-.btn-outline:hover{
-  background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.25);
+.row{
+display:flex;
+gap:12px
 }
 
-/* Inputs más app-like */
-.field{
-  min-height:48px;
-  border-radius:14px;
-  background:rgba(8,4,22,.62);
+.row>*{
+flex:1
 }
 
-.field::placeholder{
-  color:#74688e;
+.logo{
+font-size:34px;
+font-weight:900;
+letter-spacing:-1px;
+background:
+linear-gradient(90deg,#fff,#d9c8ff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
 }
 
-/* Badges */
-.badge{
-  padding:7px 11px;
-  box-shadow:inset 0 0 16px rgba(0,224,255,.035);
+.logo span{
+background:
+linear-gradient(90deg,var(--pink),var(--cyan));
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
 }
 
-/* Progreso */
+.tagline{
+color:#b7a6e0;
+font-size:13px;
+font-weight:600
+}
+
+.page-title{
+font-size:32px;
+font-weight:900;
+letter-spacing:-1.5px;
+margin:20px 0 4px
+}
+
+.page-subtitle{
+color:#b6a9d9;
+font-size:15px;
+margin-bottom:22px
+}
+
+.card{
+background:
+linear-gradient(
+160deg,
+rgba(35,20,60,.75),
+rgba(15,10,30,.85)
+);
+border:1px solid rgba(255,255,255,.10);
+border-radius:22px;
+padding:22px;
+margin-bottom:16px;
+box-shadow:0 12px 35px rgba(0,0,0,.35);
+backdrop-filter:blur(6px);
+transition:.2s
+}
+
+.card:hover{
+border-color:rgba(255,255,255,.22);
+transform:translateY(-2px)
+}
+
+.card:active{
+transform:translateY(0)
+}
+
+.card-blue{
+background:
+radial-gradient(
+circle at top right,
+rgba(0,224,255,.28),
+transparent 50%
+),
+linear-gradient(
+160deg,
+rgba(20,30,70,.85),
+rgba(10,12,35,.9)
+)
+}
+
+.card-orange{
+background:
+radial-gradient(
+circle at top right,
+rgba(255,138,30,.28),
+transparent 50%
+),
+linear-gradient(
+160deg,
+rgba(60,30,15,.85),
+rgba(25,12,10,.9)
+)
+}
+
+.card-purple{
+background:
+radial-gradient(
+circle at top right,
+rgba(255,46,154,.26),
+transparent 50%
+),
+linear-gradient(
+160deg,
+rgba(50,15,60,.85),
+rgba(20,8,30,.9)
+)
+}
+
+.metric{
+font-size:27px;
+font-weight:900;
+background:
+linear-gradient(90deg,#fff,#e6d8ff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
+}
+
+.metric-label{
+color:#b6a9d9;
+font-size:12px;
+font-weight:700;
+letter-spacing:.5px
+}
+
+.big-number{
+font-size:44px;
+font-weight:900;
+background:
+linear-gradient(90deg,var(--cyan),var(--lime));
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
+}
+
+.small-muted{
+color:#a99cc9;
+font-size:13px
+}
+
+.hero{
+border-radius:28px;
+padding:34px 26px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,.14);
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(
+circle at 85% 10%,
+rgba(0,224,255,.30),
+transparent 40%
+),
+radial-gradient(
+circle at 10% 100%,
+rgba(255,46,154,.25),
+transparent 40%
+),
+linear-gradient(
+135deg,
+#1a0c3d,
+#0a0620
+);
+box-shadow:0 15px 45px rgba(90,20,140,.25)
+}
+
+.hero-kicker{
+color:var(--cyan);
+font-size:12px;
+font-weight:900;
+text-transform:uppercase;
+letter-spacing:2.5px
+}
+
+.hero-title{
+font-size:39px;
+line-height:1.08;
+font-weight:900;
+margin:10px 0
+}
+
+.hero-title span{
+background:
+linear-gradient(
+90deg,
+var(--pink),
+var(--orange)
+);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
+}
+
+.hero-text{
+color:#c3b6e6;
+font-size:15px;
+line-height:1.65
+}
+
+.avatar{
+width:112px;
+height:112px;
+border-radius:50%;
+background:
+linear-gradient(
+145deg,
+var(--pink),
+var(--purple) 60%,
+var(--blue)
+);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:58px;
+margin:0 auto 10px;
+border:3px solid rgba(255,255,255,.35);
+box-shadow:0 0 50px rgba(255,46,154,.35)
+}
+
 .progress-container{
-  height:10px;
-  background:rgba(255,255,255,.065);
-  box-shadow:inset 0 1px 3px rgba(0,0,0,.25);
+background:rgba(255,255,255,.08);
+height:11px;
+border-radius:20px;
+overflow:hidden;
+margin:12px 0
 }
 
 .progress-bar{
-  box-shadow:0 0 16px rgba(0,224,255,.28);
+height:100%;
+border-radius:20px;
+background:
+linear-gradient(
+90deg,
+var(--pink),
+var(--cyan)
+)
 }
 
-/* Story */
 .story{
-  position:relative;
-  overflow:hidden;
-  box-shadow:var(--shadow);
+min-height:440px;
+border-radius:26px;
+padding:30px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+border:1px solid rgba(255,255,255,.12);
+background:
+radial-gradient(
+circle at 80% 15%,
+rgba(255,138,30,.35),
+transparent 35%
+),
+linear-gradient(
+150deg,
+#2a1050,
+#0c0620
+)
 }
 
-.story::after{
-  content:"";
-  position:absolute;
-  width:150px;
-  height:150px;
-  right:-55px;
-  top:-55px;
-  border-radius:50%;
-  background:rgba(255,138,30,.18);
-  filter:blur(10px);
-  pointer-events:none;
+.story-label{
+color:var(--orange);
+font-size:12px;
+font-weight:900;
+letter-spacing:2px
 }
 
-/* Navegación: dock de app */
+.story-question{
+font-size:29px;
+font-weight:900;
+line-height:1.2;
+margin-top:14px
+}
+
+.badge{
+display:inline-block;
+background:rgba(0,224,255,.15);
+color:#7be9ff;
+padding:6px 12px;
+border-radius:50px;
+font-size:12px;
+font-weight:800;
+margin:3px 4px 3px 0;
+border:1px solid rgba(0,224,255,.25)
+}
+
+.badge-orange{
+background:rgba(255,138,30,.15);
+color:#ffb266;
+border-color:rgba(255,138,30,.3)
+}
+
+.chat-user{
+background:
+linear-gradient(
+135deg,
+var(--purple),
+var(--blue)
+);
+border-radius:18px 18px 4px 18px;
+padding:13px 16px;
+margin:10px 0 10px 18%;
+font-weight:600
+}
+
+.chat-ai{
+background:rgba(255,255,255,.06);
+border-radius:18px 18px 18px 4px;
+padding:13px 16px;
+margin:10px 18% 10px 0;
+border:1px solid rgba(255,255,255,.1)
+}
+
+.field{
+width:100%;
+padding:12px 14px;
+border-radius:12px;
+border:1.5px solid rgba(255,255,255,.15);
+background:rgba(20,10,40,.6);
+color:#fff;
+font-size:14px;
+margin:6px 0 14px
+}
+
+.field:focus{
+outline:none;
+border-color:var(--pink)
+}
+
+.toast{
+position:fixed;
+left:50%;
+bottom:90px;
+transform:translateX(-50%);
+background:
+linear-gradient(
+135deg,
+var(--green),
+#0aa869
+);
+color:#03130a;
+padding:12px 22px;
+border-radius:14px;
+font-weight:800;
+font-size:14px;
+box-shadow:0 10px 30px rgba(20,220,140,.4);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:50;
+text-align:center;
+max-width:90%
+}
+
+.toast.show{
+opacity:1;
+bottom:100px
+}
+
+.alert{
+border-radius:14px;
+padding:13px 16px;
+font-size:13px;
+margin:14px 0;
+border:1px solid
+}
+
+.alert-warn{
+background:rgba(255,180,30,.12);
+color:#ffd27a;
+border-color:rgba(255,180,30,.3)
+}
+
+.alert-info{
+background:rgba(0,224,255,.10);
+color:#8ee9ff;
+border-color:rgba(0,224,255,.3)
+}
+
+.alert-ok{
+background:rgba(18,226,138,.12);
+color:#7cf0bb;
+border-color:rgba(18,226,138,.3)
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
 .nav{
-  position:fixed;
-  left:50%;
-  bottom:max(10px,env(safe-area-inset-bottom));
-  transform:translateX(-50%);
-  width:min(760px,calc(100% - 20px));
-  padding:8px;
-  display:grid;
-  grid-template-columns:repeat(8,minmax(0,1fr));
-  gap:7px;
-  background:rgba(7,3,20,.90);
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:22px;
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-  box-shadow:
-    0 18px 55px rgba(0,0,0,.52),
-    0 0 40px rgba(124,58,255,.10);
-  z-index:40;
+position:fixed;
+left:50%;
+bottom:max(10px,env(safe-area-inset-bottom));
+transform:translateX(-50%);
+width:min(760px,calc(100% - 20px));
+padding:8px;
+display:grid;
+grid-template-columns:repeat(8,minmax(0,1fr));
+gap:7px;
+background:rgba(7,3,20,.90);
+border:1px solid rgba(255,255,255,.13);
+border-radius:22px;
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
+box-shadow:
+0 18px 55px rgba(0,0,0,.52),
+0 0 40px rgba(124,58,255,.10);
+z-index:40
 }
 
 .nav button{
-  position:relative;
-  min-width:0;
-  min-height:64px;
-  padding:7px 3px;
-  border-radius:15px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.065);
-  color:#9185ad;
-  font-size:24px;
-  overflow:hidden;
+position:relative;
+min-width:0;
+min-height:64px;
+padding:7px 3px;
+border-radius:15px;
+background:rgba(255,255,255,.035);
+border:1px solid rgba(255,255,255,.065);
+color:#9185ad;
+font-size:24px;
+overflow:hidden
 }
 
 .nav button::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 60%);
-  opacity:0;
-  transition:.2s;
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.06),
+transparent 60%
+);
+opacity:0;
+transition:.2s
 }
 
 .nav button:hover::before,
 .nav button.active::before{
-  opacity:1;
+opacity:1
 }
 
 .nav button:hover{
-  color:#fff;
-  transform:translateY(-2px);
-  border-color:rgba(255,255,255,.18);
-  background:rgba(255,255,255,.075);
+color:#fff;
+transform:translateY(-2px);
+border-color:rgba(255,255,255,.18);
+background:rgba(255,255,255,.075)
 }
 
 .nav button.active{
-  color:#fff;
-  background:linear-gradient(135deg,
-    rgba(255,46,154,.28),
-    rgba(124,58,255,.28),
-    rgba(0,224,255,.16)
-  );
-  border-color:rgba(255,255,255,.22);
-  box-shadow:
-    0 6px 18px rgba(124,58,255,.18),
-    inset 0 0 18px rgba(255,255,255,.035);
+color:#fff;
+background:
+linear-gradient(
+135deg,
+rgba(255,46,154,.28),
+rgba(124,58,255,.28),
+rgba(0,224,255,.16)
+);
+border-color:rgba(255,255,255,.22);
+box-shadow:
+0 6px 18px rgba(124,58,255,.18),
+inset 0 0 18px rgba(255,255,255,.035)
 }
 
 .nav span{
-  position:relative;
-  z-index:1;
-  font-size:9px;
-  font-weight:800;
+position:relative;
+z-index:1;
+font-size:9px;
+font-weight:800
 }
 
-/* Tablet */
-@media(max-width:900px){
-  .nav{
-    width:calc(100% - 16px);
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:6px;
-    bottom:max(6px,env(safe-area-inset-bottom));
-  }
-
-  .nav button{
-    min-height:61px;
-    font-size:23px;
-  }
-
-  .nav span{
-    font-size:9px;
-  }
+select.field{
+appearance:none
 }
 
-/* Celular */
-@media(max-width:600px){
-  body{
-    background:#070315;
-  }
-
-  .wrap{
-    padding:20px 13px calc(158px + env(safe-area-inset-bottom));
-  }
-
-  #app{
-    width:100%;
-  }
-
-  .logo{
-    font-size:29px;
-  }
-
-  .hero{
-    margin-bottom:15px;
-    padding:25px 19px;
-    border-radius:23px;
-  }
-
-  .hero-kicker{
-    font-size:10px;
-    letter-spacing:1.7px;
-  }
-
-  .hero-title{
-    font-size:29px;
-    letter-spacing:-1px;
-  }
-
-  .hero-text{
-    font-size:14px;
-    line-height:1.6;
-  }
-
-  .page-title{
-    font-size:26px;
-    letter-spacing:-.8px;
-  }
-
-  .page-subtitle{
-    font-size:14px;
-    line-height:1.5;
-  }
-
-  .card{
-    padding:18px;
-    border-radius:19px;
-    margin-bottom:12px;
-  }
-
-  .row{
-    gap:9px;
-  }
-
-  .row>*{
-    flex:1 1 100%;
-  }
-
-  /* En filas de métricas dejamos 3 tarjetas pequeñas */
-  .row:has(.metric)>*{
-    flex:1 1 0;
-    min-width:0;
-  }
-
-  .metric{
-    font-size:23px;
-  }
-
-  .metric-label{
-    font-size:10px;
-  }
-
-  .btn{
-    min-height:50px;
-    border-radius:14px;
-  }
-
-  .nav{
-    width:calc(100% - 12px);
-    padding:6px;
-    gap:5px;
-    border-radius:19px;
-  }
-
-  .nav button{
-    min-height:58px;
-    border-radius:13px;
-    font-size:21px;
-  }
-
-  .nav span{
-    font-size:8px;
-  }
+h2,h3{
+margin:10px 0 6px
 }
 
-/* Celulares muy pequeños */
-@media(max-width:360px){
-  .wrap{
-    padding-left:10px;
-    padding-right:10px;
-  }
+/* =========================================================
+   PRESENTACIÓN PC
+========================================================= */
 
-  .nav{
-    width:calc(100% - 8px);
-  }
+@media(min-width:901px){
 
-  .nav button{
-    min-height:54px;
-    font-size:19px;
-  }
-
-  .nav span{
-    font-size:7.5px;
-  }
+.wrap{
+padding-top:38px
 }
 
-/* Evita que los elementos interactivos se vean diminutos */
-@media(max-width:600px){
-  input,select,button{
-    touch-action:manipulation;
-  }
+.hero{
+padding:40px 30px
 }
 
+.card{
+padding:24px
+}
 
-/* ===== SIMULADOR V3 ===== */
+.page-title{
+font-size:34px
+}
+
+body{
+background:#03020b
+}
+
+body::before{
+opacity:.78
+}
+
+#app{
+width:min(820px,calc(100vw - 40px));
+margin:18px auto 0;
+min-height:calc(100vh - 160px);
+border:1px solid rgba(255,255,255,.07);
+border-radius:32px;
+background:
+linear-gradient(
+180deg,
+rgba(16,8,35,.30),
+rgba(7,3,20,.16)
+);
+box-shadow:0 30px 90px rgba(0,0,0,.30);
+overflow:hidden
+}
+
+}
+
+/* =========================================================
+   V2
+========================================================= */
+
+:root{
+--app-bg:#070315;
+--glass:rgba(20,12,42,.72);
+--glass-strong:rgba(15,8,32,.90);
+--line:rgba(255,255,255,.11);
+--line-soft:rgba(255,255,255,.07);
+--muted:#a99dcc;
+--shadow:0 18px 55px rgba(0,0,0,.34)
+}
+
+.logo{
+font-size:32px;
+letter-spacing:-1.5px;
+text-shadow:0 0 30px rgba(255,46,154,.18)
+}
+
+.tagline{
+margin-top:2px;
+letter-spacing:.2px
+}
+
+.hero{
+position:relative;
+isolation:isolate;
+overflow:hidden
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+right:-70px;
+bottom:-85px;
+border-radius:50%;
+background:rgba(124,58,255,.22);
+filter:blur(20px);
+z-index:-1
+}
+
+.hero-kicker{
+display:inline-flex;
+align-items:center;
+padding:7px 10px;
+border-radius:999px;
+background:rgba(0,224,255,.08);
+border:1px solid rgba(0,224,255,.16)
+}
+
+.hero-text{
+max-width:620px
+}
+
+.card{
+box-shadow:var(--shadow)
+}
+
+.btn{
+min-height:52px;
+letter-spacing:.15px
+}
+
+.btn-outline{
+background:rgba(255,255,255,.045)
+}
+
+.btn-outline:hover{
+background:rgba(255,255,255,.09);
+border-color:rgba(255,255,255,.25)
+}
+
+.field{
+min-height:48px;
+border-radius:14px;
+background:rgba(8,4,22,.62)
+}
+
+.field::placeholder{
+color:#74688e
+}
+
+.badge{
+padding:7px 11px;
+box-shadow:inset 0 0 16px rgba(0,224,255,.035)
+}
+
+.progress-container{
+height:10px;
+background:rgba(255,255,255,.065);
+box-shadow:inset 0 1px 3px rgba(0,0,0,.25)
+}
+
+.progress-bar{
+box-shadow:0 0 16px rgba(0,224,255,.28)
+}
+
+.story{
+position:relative;
+overflow:hidden;
+box-shadow:var(--shadow)
+}
+
+.story::after{
+content:"";
+position:absolute;
+width:150px;
+height:150px;
+right:-55px;
+top:-55px;
+border-radius:50%;
+background:rgba(255,138,30,.18);
+filter:blur(10px);
+pointer-events:none
+}
+
+/* =========================================================
+   SIMULADOR V3
+========================================================= */
+
 .sim-hero{
-  position:relative;
-  overflow:hidden;
-  padding:22px;
-  border-radius:24px;
-  background:
-    radial-gradient(circle at 88% 12%,rgba(0,224,255,.18),transparent 34%),
-    radial-gradient(circle at 12% 90%,rgba(124,58,255,.20),transparent 38%),
-    linear-gradient(145deg,rgba(29,14,60,.88),rgba(9,5,25,.82));
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 18px 50px rgba(0,0,0,.30);
+position:relative;
+overflow:hidden;
+padding:22px;
+border-radius:24px;
+background:
+radial-gradient(circle at 88% 12%,rgba(0,224,255,.18),transparent 34%),
+radial-gradient(circle at 12% 90%,rgba(124,58,255,.20),transparent 38%),
+linear-gradient(145deg,rgba(29,14,60,.88),rgba(9,5,25,.82));
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 18px 50px rgba(0,0,0,.30)
 }
+
 .sim-hero .sim-icon{
-  width:52px;height:52px;
-  display:grid;place-items:center;
-  border-radius:16px;
-  background:rgba(0,224,255,.10);
-  border:1px solid rgba(0,224,255,.18);
-  font-size:27px;
-  margin-bottom:14px;
+width:52px;
+height:52px;
+display:grid;
+place-items:center;
+border-radius:16px;
+background:rgba(0,224,255,.10);
+border:1px solid rgba(0,224,255,.18);
+font-size:27px;
+margin-bottom:14px
 }
+
 .sim-kicker{
-  color:#78eaff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.8px;
+color:#78eaff;
+font-size:10px;
+font-weight:900;
+letter-spacing:1.8px
 }
+
 .sim-title{
-  margin-top:5px;
-  font-size:29px;
-  line-height:1.08;
-  font-weight:950;
-  letter-spacing:-1px;
+margin-top:5px;
+font-size:29px;
+line-height:1.08;
+font-weight:950;
+letter-spacing:-1px
 }
+
 .sim-title span{
-  background:linear-gradient(90deg,#fff,#7eefff,#b894ff);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+background:
+linear-gradient(
+90deg,
+#fff,
+#7eefff,
+#b894ff
+);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
 }
+
 .sim-sub{
-  margin-top:9px;
-  color:#aaa0c4;
-  font-size:13px;
-  line-height:1.55;
+margin-top:9px;
+color:#aaa0c4;
+font-size:13px;
+line-height:1.55
 }
+
 .sim-input-card{
-  margin-top:14px;
-  padding:18px;
-  border-radius:20px;
-  background:rgba(13,7,30,.78);
-  border:1px solid rgba(255,255,255,.09);
+margin-top:14px;
+padding:18px;
+border-radius:20px;
+background:rgba(13,7,30,.78);
+border:1px solid rgba(255,255,255,.09)
 }
+
 .sim-label-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:9px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:9px
 }
+
 .sim-label{
-  font-size:12px;
-  font-weight:850;
-  color:#c9c0dc;
+font-size:12px;
+font-weight:850;
+color:#c9c0dc
 }
+
 .sim-value{
-  color:#fff;
-  font-size:20px;
-  font-weight:950;
+color:#fff;
+font-size:20px;
+font-weight:950
 }
+
 .sim-range{
-  width:100%;
-  accent-color:#7c3aff;
-  cursor:pointer;
+width:100%;
+accent-color:#7c3aff;
+cursor:pointer
 }
+
 .sim-presets{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  margin-top:11px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px;
+margin-top:11px
 }
+
 .sim-preset{
-  min-height:40px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.045);
-  color:#bdb2d2;
-  font-weight:800;
-  font-size:11px;
+min-height:40px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.09);
+background:rgba(255,255,255,.045);
+color:#bdb2d2;
+font-weight:800;
+font-size:11px
 }
-.sim-preset:hover,.sim-preset.active{
-  color:#fff;
-  border-color:rgba(124,58,255,.55);
-  background:rgba(124,58,255,.16);
+
+.sim-preset:hover,
+.sim-preset.active{
+color:#fff;
+border-color:rgba(124,58,255,.55);
+background:rgba(124,58,255,.16)
 }
+
 .sim-total{
-  margin-top:14px;
-  padding:21px;
-  border-radius:23px;
-  background:
-    linear-gradient(135deg,rgba(0,224,255,.13),rgba(124,58,255,.18)),
-    rgba(13,7,30,.82);
-  border:1px solid rgba(120,235,255,.17);
-  box-shadow:0 18px 50px rgba(0,0,0,.25);
+margin-top:14px;
+padding:21px;
+border-radius:23px;
+background:
+linear-gradient(
+135deg,
+rgba(0,224,255,.13),
+rgba(124,58,255,.18)
+),
+rgba(13,7,30,.82);
+border:1px solid rgba(120,235,255,.17);
+box-shadow:0 18px 50px rgba(0,0,0,.25)
 }
+
 .sim-total-label{
-  color:#8eeaff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.5px;
+color:#8eeaff;
+font-size:10px;
+font-weight:900;
+letter-spacing:1.5px
 }
+
 .sim-total-number{
-  margin-top:5px;
-  font-size:42px;
-  line-height:1;
-  font-weight:950;
-  letter-spacing:-1.5px;
+margin-top:5px;
+font-size:42px;
+line-height:1;
+font-weight:950;
+letter-spacing:-1.5px
 }
+
 .sim-total-copy{
-  margin-top:8px;
-  color:#aaa0c4;
-  font-size:12px;
+margin-top:8px;
+color:#aaa0c4;
+font-size:12px
 }
+
 .sim-stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:12px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:12px
 }
+
 .sim-stat{
-  padding:13px 9px;
-  border-radius:16px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.065);
+padding:13px 9px;
+border-radius:16px;
+background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.065)
 }
+
 .sim-stat strong{
-  display:block;
-  font-size:16px;
-  color:#fff;
+display:block;
+font-size:16px;
+color:#fff
 }
+
 .sim-stat span{
-  display:block;
-  margin-top:3px;
-  color:#8f84a9;
-  font-size:9px;
-  line-height:1.25;
+display:block;
+margin-top:3px;
+color:#8f84a9;
+font-size:9px;
+line-height:1.25
 }
+
 .sim-chart-card{
-  margin-top:12px;
-  padding:17px;
-  border-radius:20px;
-  background:rgba(13,7,30,.72);
-  border:1px solid rgba(255,255,255,.08);
+margin-top:12px;
+padding:17px;
+border-radius:20px;
+background:rgba(13,7,30,.72);
+border:1px solid rgba(255,255,255,.08)
 }
+
 .sim-section-title{
-  font-size:13px;
-  font-weight:900;
-  color:#eee8f7;
+font-size:13px;
+font-weight:900;
+color:#eee8f7
 }
+
 .sim-section-sub{
-  margin-top:3px;
-  color:#817696;
-  font-size:10px;
+margin-top:3px;
+color:#817696;
+font-size:10px
 }
+
 .sim-chart-wrap{
-  margin-top:9px;
-  margin-left:-7px;
-  margin-right:-7px;
+margin-top:9px;
+margin-left:-7px;
+margin-right:-7px
 }
+
 .sim-insight{
-  margin-top:12px;
-  padding:15px;
-  border-radius:17px;
-  background:rgba(255,138,30,.075);
-  border:1px solid rgba(255,138,30,.18);
+margin-top:12px;
+padding:15px;
+border-radius:17px;
+background:rgba(255,138,30,.075);
+border:1px solid rgba(255,138,30,.18)
 }
+
 .sim-insight strong{
-  color:#ffc078;
+color:#ffc078
 }
+
 .sim-note{
-  margin-top:12px;
-  font-size:10px;
-  line-height:1.5;
-  color:#817696;
+margin-top:12px;
+font-size:10px;
+line-height:1.5;
+color:#817696
 }
+
+/* =========================================================
+   NUEVO — CAMINO FINANCIERO
+========================================================= */
+
+.path-card{
+position:relative;
+overflow:hidden;
+padding:18px;
+border-radius:20px;
+margin-bottom:11px;
+background:
+linear-gradient(
+145deg,
+rgba(25,13,53,.86),
+rgba(10,6,25,.90)
+);
+border:1px solid rgba(255,255,255,.08);
+transition:.2s
+}
+
+.path-card:hover{
+transform:translateY(-2px);
+border-color:rgba(255,255,255,.20)
+}
+
+.path-card.locked{
+opacity:.55
+}
+
+.path-card.done{
+border-color:rgba(18,226,138,.28);
+background:
+linear-gradient(
+145deg,
+rgba(10,50,43,.60),
+rgba(10,8,28,.90)
+)
+}
+
+.path-number{
+width:42px;
+height:42px;
+display:grid;
+place-items:center;
+border-radius:14px;
+font-size:20px;
+background:
+linear-gradient(
+135deg,
+rgba(255,46,154,.18),
+rgba(124,58,255,.22)
+);
+border:1px solid rgba(255,255,255,.10)
+}
+
+.path-line{
+position:absolute;
+left:38px;
+top:60px;
+bottom:-15px;
+width:2px;
+background:
+linear-gradient(
+180deg,
+rgba(124,58,255,.55),
+rgba(0,224,255,.05)
+)
+}
+
+.path-last .path-line{
+display:none
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:14px
+}
+
+.choice-btn{
+min-height:70px;
+padding:12px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.10);
+background:rgba(255,255,255,.045);
+color:#fff;
+font-weight:800;
+text-align:left;
+transition:.2s
+}
+
+.choice-btn:hover{
+transform:translateY(-2px);
+border-color:rgba(255,255,255,.22);
+background:rgba(255,255,255,.09)
+}
+
+.choice-btn.pink:hover{
+border-color:rgba(255,46,154,.5);
+background:rgba(255,46,154,.10)
+}
+
+.choice-btn.cyan:hover{
+border-color:rgba(0,224,255,.5);
+background:rgba(0,224,255,.08)
+}
+
+.choice-btn.orange:hover{
+border-color:rgba(255,138,30,.5);
+background:rgba(255,138,30,.08)
+}
+
+.choice-btn.green:hover{
+border-color:rgba(18,226,138,.5);
+background:rgba(18,226,138,.08)
+}
+
+/* =========================================================
+   NUEVO — MARIPOSA
+========================================================= */
+
+.butterfly{
+position:relative;
+padding:22px;
+border-radius:24px;
+overflow:hidden;
+background:
+radial-gradient(
+circle at 80% 20%,
+rgba(255,46,154,.22),
+transparent 35%
+),
+radial-gradient(
+circle at 20% 80%,
+rgba(0,224,255,.16),
+transparent 38%
+),
+linear-gradient(
+145deg,
+rgba(38,15,66,.90),
+rgba(9,5,25,.90)
+);
+border:1px solid rgba(255,255,255,.11);
+box-shadow:var(--shadow)
+}
+
+.chain{
+display:flex;
+align-items:stretch;
+gap:7px;
+margin:18px 0;
+flex-wrap:wrap
+}
+
+.chain-step{
+flex:1;
+min-width:110px;
+padding:13px 10px;
+border-radius:14px;
+background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.075);
+text-align:center
+}
+
+.chain-arrow{
+display:flex;
+align-items:center;
+justify-content:center;
+color:#7c6d98;
+font-weight:900
+}
+
+/* =========================================================
+   NUEVO — EVENTOS
+========================================================= */
+
+.event-card{
+padding:23px;
+border-radius:23px;
+background:
+radial-gradient(
+circle at 90% 10%,
+rgba(0,224,255,.20),
+transparent 38%
+),
+linear-gradient(
+145deg,
+rgba(22,13,52,.90),
+rgba(8,5,24,.94)
+);
+border:1px solid rgba(255,255,255,.11);
+box-shadow:var(--shadow)
+}
+
+.event-icon{
+font-size:54px;
+margin-bottom:12px
+}
+
+.event-type{
+font-size:10px;
+font-weight:900;
+letter-spacing:2px;
+color:#7eefff
+}
+
+.result-card{
+margin-top:14px;
+padding:17px;
+border-radius:17px;
+border:1px solid rgba(255,255,255,.10);
+background:rgba(255,255,255,.045)
+}
+
+/* =========================================================
+   NUEVO — ETIQUETAS DE CONSECUENCIA
+========================================================= */
+
+.consequence{
+display:flex;
+align-items:flex-start;
+gap:10px;
+padding:12px;
+border-radius:14px;
+margin-top:8px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.07)
+}
+
+.consequence-icon{
+font-size:19px;
+line-height:1
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:900px){
+
+.nav{
+width:calc(100% - 16px);
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:6px;
+bottom:max(6px,env(safe-area-inset-bottom))
+}
+
+.nav button{
+min-height:61px;
+font-size:23px
+}
+
+.nav span{
+font-size:9px
+}
+
+}
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
 @media(max-width:600px){
-  .sim-hero{padding:19px;border-radius:21px}
-  .sim-title{font-size:27px}
-  .sim-input-card{padding:16px}
-  .sim-presets{grid-template-columns:repeat(4,1fr)}
-  .sim-total{padding:19px}
-  .sim-total-number{font-size:38px}
-  .sim-stats{gap:6px}
-  .sim-stat{padding:12px 7px}
-  .sim-stat strong{font-size:15px}
+
+body{
+background:#070315
 }
+
+.wrap{
+padding:20px 13px calc(158px + env(safe-area-inset-bottom))
+}
+
+#app{
+width:100%
+}
+
+.logo{
+font-size:29px
+}
+
+.hero{
+margin-bottom:15px;
+padding:25px 19px;
+border-radius:23px
+}
+
+.hero-kicker{
+font-size:10px;
+letter-spacing:1.7px
+}
+
+.hero-title{
+font-size:29px;
+letter-spacing:-1px
+}
+
+.hero-text{
+font-size:14px;
+line-height:1.6
+}
+
+.page-title{
+font-size:26px;
+letter-spacing:-.8px
+}
+
+.page-subtitle{
+font-size:14px;
+line-height:1.5
+}
+
+.card{
+padding:18px;
+border-radius:19px;
+margin-bottom:12px
+}
+
+.row{
+gap:9px
+}
+
+.row>*{
+flex:1 1 100%
+}
+
+.row:has(.metric)>*{
+flex:1 1 0;
+min-width:0
+}
+
+.metric{
+font-size:23px
+}
+
+.metric-label{
+font-size:10px
+}
+
+.btn{
+min-height:50px;
+border-radius:14px
+}
+
+.nav{
+width:calc(100% - 12px);
+padding:6px;
+gap:5px;
+border-radius:19px
+}
+
+.nav button{
+min-height:58px;
+border-radius:13px;
+font-size:21px
+}
+
+.nav span{
+font-size:8px
+}
+
+.choice-grid{
+grid-template-columns:1fr
+}
+
+.chain{
+display:block
+}
+
+.chain-step{
+margin-bottom:7px
+}
+
+.chain-arrow{
+transform:rotate(90deg);
+margin:3px
+}
+
+}
+
 @media(max-width:360px){
-  .sim-presets{grid-template-columns:repeat(2,1fr)}
+
+.wrap{
+padding-left:10px;
+padding-right:10px
+}
+
+.nav{
+width:calc(100% - 8px)
+}
+
+.nav button{
+min-height:54px;
+font-size:19px
+}
+
+.nav span{
+font-size:7.5px
+}
+
+.sim-presets{
+grid-template-columns:repeat(2,1fr)
+}
+
+}
+
+input,select,button{
+touch-action:manipulation
 }
 
 </style>
 </head>
+
 <body>
+
 <main id="app" class="wrap" aria-label="Aplicación FUTURO"></main>
+
 <div id="toast" class="toast"></div>
 
 <script>
+
+/* =========================================================
+   ESTADO PRINCIPAL
+========================================================= */
+
 const S = {
-  pantalla:"onboarding", edad:21, ahorro_semana:10, ahorro_total:0,
-  xp:120, racha:12, nivel:7, meta:38,
-  stories_completadas:0, misiones_completadas:0, logros:4
+
+pantalla:"onboarding",
+
+edad:21,
+
+ahorro_semana:10,
+
+ahorro_total:0,
+
+xp:120,
+
+racha:12,
+
+nivel:7,
+
+meta:38,
+
+stories_completadas:0,
+
+misiones_completadas:0,
+
+logros:4,
+
+/* NUEVO */
+
+camino_etapa:0,
+
+camino_completadas:[],
+
+eventos_completados:0,
+
+mariposa_completadas:0,
+
+decisiones:0,
+
+ai_mensajes:[],
+
+_semanas:52,
+
+_aporte:10,
+
+_sim_semanas:52,
+
+_eventoActual:0,
+
+_mariposaActual:0
+
 };
+
+
+/* =========================================================
+   MISIONES EXISTENTES
+========================================================= */
+
 const misionesData = [
-  ["🔥","El reto S/5","Encuentra S/5 que normalmente gastarías y guárdalos.",100,5],
-  ["💳","Compra consciente","Antes de comprar algo, espera 10 minutos.",75,0],
-  ["🎯","Primera meta","Define para qué quieres tener dinero en el futuro.",100,0],
-  ["🌅","Piensa en 2040","Imagina una experiencia que quieres poder elegir mañana.",150,0]
+
+["🔥",
+"El reto S/5",
+"Encuentra S/5 que normalmente gastarías y guárdalos.",
+100,
+5],
+
+["💳",
+"Compra consciente",
+"Antes de comprar algo, espera 10 minutos.",
+75,
+0],
+
+["🎯",
+"Primera meta",
+"Define para qué quieres tener dinero en el futuro.",
+100,
+0],
+
+["🌅",
+"Piensa en 2040",
+"Imagina una experiencia que quieres poder elegir mañana.",
+150,
+0]
+
 ];
-const navOpts = [["🏠","Inicio","inicio"],["📖","Stories","stories"],["🎯","Misiones","misiones"],
-["🤖","AI","ai"],["🌅","Vida","vida"],["📊","Simular","simulador"],["👥","Círculo","circulo"],["👤","Perfil","perfil"]];
+
+
+/* =========================================================
+   NAVEGACIÓN ORIGINAL — NO SE MODIFICA
+========================================================= */
+
+const navOpts = [
+
+["🏠","Inicio","inicio"],
+
+["📖","Stories","stories"],
+
+["🎯","Misiones","misiones"],
+
+["🤖","AI","ai"],
+
+["🌅","Vida","vida"],
+
+["📊","Simular","simulador"],
+
+["👥","Círculo","circulo"],
+
+["👤","Perfil","perfil"]
+
+];
+
+
+/* =========================================================
+   MI CAMINO FINANCIERO
+========================================================= */
+
+const caminoData = [
+
+{
+icon:"💼",
+titulo:"Primer trabajo",
+sub:"Tu primer ingreso cambia las posibilidades que tienes.",
+texto:"Recibes tu primer sueldo. Antes de gastarlo, puedes decidir qué parte irá a tus necesidades, qué parte a tus metas y qué parte quedará disponible.",
+choices:[
+["📱","Gastarlo casi todo","pink"],
+["🧠","Separar una parte primero","cyan"]
+],
+aprendizaje:"Tu primer sueldo no solo compra cosas: también puede iniciar hábitos financieros."
+},
+
+{
+icon:"🏦",
+titulo:"Primera cuenta",
+sub:"Tu dinero necesita un lugar y una organización.",
+texto:"Empiezas a recibir ingresos regularmente. Ahora necesitas una forma segura de administrar tu dinero.",
+choices:[
+["🔍","Comparar condiciones antes de elegir","cyan"],
+["⚡","Elegir sin revisar","pink"]
+],
+aprendizaje:"Antes de usar un producto financiero, revisar condiciones, costos y funcionamiento ayuda a tomar decisiones informadas."
+},
+
+{
+icon:"💰",
+titulo:"Primer ahorro",
+sub:"Una cantidad pequeña también puede iniciar un hábito.",
+texto:"Después de recibir tus ingresos, decides separar una cantidad antes de comenzar a gastar.",
+choices:[
+["🌱","Separar primero","green"],
+["🛍️","Guardar solo lo que sobre","orange"]
+],
+aprendizaje:"Convertir el ahorro en una decisión repetida puede facilitar la formación de un hábito."
+},
+
+{
+icon:"💳",
+titulo:"Primera tarjeta",
+sub:"El crédito no es dinero adicional gratuito.",
+texto:"Te ofrecen una tarjeta. Puedes usarla como herramienta de pago, pero tendrás que conocer sus condiciones y fechas de pago.",
+choices:[
+["📖","Leer condiciones y costos","cyan"],
+["🔥","Usarla sin revisar","pink"]
+],
+aprendizaje:"Una tarjeta puede ser una herramienta útil si comprendes sus costos, fechas y condiciones."
+},
+
+{
+icon:"🧾",
+titulo:"Primer crédito",
+sub:"Antes de aceptar, entiende qué estás contratando.",
+texto:"Quieres comprar algo importante y evalúas solicitar un crédito.",
+choices:[
+["🔎","Comparar opciones y costo total","cyan"],
+["⚡","Aceptar la primera oferta","orange"]
+],
+aprendizaje:"Comparar tasas, costos, cuotas, plazo y condiciones permite conocer mejor una obligación antes de asumirla."
+},
+
+{
+icon:"📅",
+titulo:"Las cuotas llegan",
+sub:"Una deuda también ocupa espacio en tu presupuesto.",
+texto:"Ya tienes varias obligaciones con diferentes fechas de pago.",
+choices:[
+["📆","Organizar fechas y montos","green"],
+["😬","Recordarlo de memoria","pink"]
+],
+aprendizaje:"Organizar las fechas de pago ayuda a reducir olvidos y permite anticipar la presión sobre el presupuesto."
+},
+
+{
+icon:"⚠️",
+titulo:"Mora",
+sub:"¿Qué ocurre si una cuota no se paga a tiempo?",
+texto:"Llegó la fecha de pago y no tienes suficiente liquidez. Las consecuencias dependen del producto, contrato y condiciones aplicables.",
+choices:[
+["📞","Revisar alternativas y contactar a la entidad","cyan"],
+["🙈","Ignorar el problema","pink"]
+],
+aprendizaje:"Una obligación impaga puede generar consecuencias económicas y, según las condiciones aplicables, afectar el historial crediticio. Actuar temprano permite conocer alternativas."
+},
+
+{
+icon:"📉",
+titulo:"Sobreendeudamiento",
+sub:"Pagar una deuda con otra puede convertirse en una señal de alerta.",
+texto:"Tus cuotas empiezan a ocupar una parte cada vez mayor de tus ingresos.",
+choices:[
+["🧮","Revisar mi capacidad de pago","green"],
+["💳","Solicitar otro crédito sin revisar","pink"]
+],
+aprendizaje:"Evaluar la capacidad de pago antes de asumir nuevas obligaciones ayuda a evitar una acumulación difícil de sostener."
+},
+
+{
+icon:"🚨",
+titulo:"Emergencia",
+sub:"La vida financiera también tiene imprevistos.",
+texto:"Tienes un gasto inesperado y necesitas liquidez.",
+choices:[
+["🛟","Usar un fondo de emergencia","green"],
+["💳","Endeudarme inmediatamente","orange"]
+],
+aprendizaje:"Un fondo de emergencia puede funcionar como una reserva para enfrentar gastos inesperados."
+},
+
+{
+icon:"💸",
+titulo:"Interrupción de ingresos",
+sub:"¿Qué pasa si temporalmente ganas menos?",
+texto:"Cambias de empleo o tus ingresos disminuyen durante un periodo.",
+choices:[
+["📊","Reducir gastos y priorizar obligaciones","green"],
+["🛍️","Mantener exactamente el mismo gasto","pink"]
+],
+aprendizaje:"Tener margen financiero puede facilitar la adaptación ante cambios temporales de ingresos."
+},
+
+{
+icon:"👨‍👩‍👧",
+titulo:"Responsabilidad familiar",
+sub:"Tus decisiones empiezan a involucrar a otras personas.",
+texto:"Ahora debes apoyar a un familiar o asumir nuevas responsabilidades.",
+choices:[
+["🧮","Rehacer mi presupuesto","cyan"],
+["⚡","Asumir gastos sin calcular","orange"]
+],
+aprendizaje:"Los cambios familiares pueden modificar ingresos, gastos y metas; actualizar el presupuesto ayuda a adaptarse."
+},
+
+{
+icon:"🏠",
+titulo:"Independencia",
+sub:"Vivir por tu cuenta trae nuevos gastos.",
+texto:"Decides mudarte. Aparecen alquiler, servicios, alimentación, transporte y otros gastos recurrentes.",
+choices:[
+["📊","Calcular el costo real antes de mudarme","cyan"],
+["🚀","Mudarte primero y calcular después","pink"]
+],
+aprendizaje:"Conocer los gastos recurrentes antes de asumirlos permite evaluar mejor si una decisión es sostenible."
+},
+
+{
+icon:"🛡️",
+titulo:"Protección",
+sub:"No todo se trata de acumular dinero.",
+texto:"Con más responsabilidades, empiezas a evaluar cómo protegerte frente a determinados riesgos.",
+choices:[
+["🔎","Comparar coberturas y condiciones","cyan"],
+["⚡","Contratar sin revisar","orange"]
+],
+aprendizaje:"La protección financiera implica entender qué cubre un producto, qué no cubre y cuáles son sus condiciones."
+},
+
+{
+icon:"📱",
+titulo:"Fraude digital",
+sub:"Un mensaje urgente puede no ser lo que parece.",
+texto:"Recibes un mensaje que te pide ingresar a un enlace y entregar datos para recibir un supuesto beneficio.",
+choices:[
+["🛡️","Verificar por un canal oficial","green"],
+["👆","Abrir inmediatamente","pink"]
+],
+aprendizaje:"No entregar claves, códigos o datos sensibles y verificar por canales oficiales ayuda a reducir riesgos de fraude."
+},
+
+{
+icon:"🎣",
+titulo:"Dinero fácil",
+sub:"Alguien promete ganancias rápidas y casi sin riesgo.",
+texto:"Te ofrecen duplicar tu dinero rápidamente si depositas una cantidad hoy.",
+choices:[
+["🔎","Investigar antes de entregar dinero","cyan"],
+["💸","Enviar el dinero inmediatamente","pink"]
+],
+aprendizaje:"Las promesas de ganancias rápidas y poco riesgo requieren especial cautela. Investigar antes de entregar dinero es una decisión preventiva."
+},
+
+{
+icon:"📈",
+titulo:"Inversión",
+sub:"Ahorrar e invertir no significan exactamente lo mismo.",
+texto:"Ya tienes una reserva y quieres conocer opciones para hacer crecer tu dinero.",
+choices:[
+["📚","Aprender sobre riesgo y horizonte","cyan"],
+["🚀","Elegir solo porque promete más","pink"]
+],
+aprendizaje:"Las inversiones tienen riesgos y características diferentes. Comprenderlos es parte de decidir responsablemente."
+},
+
+{
+icon:"🏪",
+titulo:"Emprendimiento",
+sub:"Tu dinero personal y el de un negocio pueden mezclarse fácilmente.",
+texto:"Empiezas un pequeño emprendimiento y necesitas organizar ingresos, costos y ganancias.",
+choices:[
+["📊","Separar y registrar los movimientos","green"],
+["💰","Mezclar todo","orange"]
+],
+aprendizaje:"Separar las finanzas personales de las del negocio facilita conocer cuánto realmente genera la actividad."
+},
+
+{
+icon:"🎓",
+titulo:"Educación",
+sub:"Invertir en formación también requiere planificación.",
+texto:"Consideras financiar un curso o especialización para mejorar tus oportunidades laborales.",
+choices:[
+["🧮","Comparar costo, beneficio y capacidad de pago","cyan"],
+["⚡","Endeudarme sin calcular","pink"]
+],
+aprendizaje:"Una decisión educativa también puede evaluarse considerando costo, plazo, beneficios esperados y capacidad de pago."
+},
+
+{
+icon:"🚗",
+titulo:"Gran compra",
+sub:"No todas las compras importantes necesitan hacerse inmediatamente.",
+texto:"Quieres comprar algo costoso y estás evaluando pagarlo al contado o financiarlo.",
+choices:[
+["🔎","Comparar costo total de alternativas","cyan"],
+["💳","Elegir solo por la cuota mensual","orange"]
+],
+aprendizaje:"Una cuota más baja no necesariamente significa menor costo total; revisar plazo y costo total ayuda a comparar."
+},
+
+{
+icon:"💍",
+titulo:"Meta personal",
+sub:"Tu dinero también puede ayudarte a construir experiencias.",
+texto:"Tienes una meta importante: viajar, estudiar, emprender o realizar un proyecto personal.",
+choices:[
+["🎯","Crear una meta y dividirla en pasos","green"],
+["🌪️","Dejarla para después","orange"]
+],
+aprendizaje:"Transformar una meta grande en pequeñas acciones puede hacerla más concreta y medible."
+},
+
+{
+icon:"🏡",
+titulo:"Patrimonio",
+sub:"Con el tiempo, tus decisiones pueden construir activos y estabilidad.",
+texto:"Empiezas a pensar más allá del consumo inmediato.",
+choices:[
+["📊","Planificar a largo plazo","cyan"],
+["⚡","Pensar solo en el siguiente mes","orange"]
+],
+aprendizaje:"La construcción patrimonial requiere tiempo, planificación y decisiones consistentes."
+},
+
+{
+icon:"👴",
+titulo:"Jubilación",
+sub:"Tu yo del futuro también necesitará ingresos.",
+texto:"Llegas a una etapa en la que importa cuánto construiste y qué fuentes de ingreso tendrás.",
+choices:[
+["🌅","Prepararme desde mi vida laboral","green"],
+["⏳","Empezar cuando sea muy tarde","orange"]
+],
+aprendizaje:"La preparación para la vejez puede comenzar desde el inicio de la vida laboral, considerando las alternativas formales disponibles."
+}
+
+];
+
+
+/* =========================================================
+   EVENTOS DE VIDA
+========================================================= */
+
+const eventosData = [
+
+{
+icon:"💼",
+tipo:"PRIMER SUELDO",
+titulo:"Te depositaron tu primer sueldo",
+texto:"Nunca habías recibido un ingreso así. Tienes varias cosas que quieres comprar.",
+opciones:[
+["🛍️ Gastarlo casi todo","Puedes disfrutarlo, pero podrías llegar al siguiente ingreso con poco margen.","pink",50],
+["🌱 Separar una parte primero","Creas un espacio para una meta antes de empezar a gastar.","green",100]
+]
+},
+
+{
+icon:"💳",
+tipo:"PRIMERA TARJETA",
+titulo:"Te ofrecen una tarjeta",
+texto:"La publicidad destaca beneficios y descuentos, pero también existen costos y condiciones.",
+opciones:[
+["📖 Revisar condiciones","Entender costos, fechas y condiciones mejora la información disponible para decidir.","cyan",100],
+["🔥 Aceptar sin revisar","Podrías descubrir condiciones importantes después de utilizarla.","orange",50]
+]
+},
+
+{
+icon:"📅",
+tipo:"CUOTAS",
+titulo:"Tienes 3 pagos este mes",
+texto:"Uno vence el día 5, otro el 15 y otro el 25.",
+opciones:[
+["📆 Organizarlos","Tienes una visión más clara de cuándo saldrá el dinero.","green",100],
+["🙈 Recordarlos de memoria","Aumenta el riesgo de olvidar una fecha.","pink",50]
+]
+},
+
+{
+icon:"⚠️",
+tipo:"MORA",
+titulo:"No pudiste pagar una cuota",
+texto:"Este mes tus ingresos fueron menores. La situación puede tener consecuencias dependiendo del producto y sus condiciones.",
+opciones:[
+["📞 Contactar y revisar opciones","Permite conocer qué alternativas existen y cuáles son sus condiciones.","cyan",120],
+["🙈 Ignorarla","El problema puede continuar y generar consecuencias según las condiciones aplicables.","pink",40]
+]
+},
+
+{
+icon:"🚨",
+tipo:"EMERGENCIA",
+titulo:"Se malogra tu celular",
+texto:"Lo necesitas para trabajar y estudiar. El gasto no estaba previsto.",
+opciones:[
+["🛟 Usar una reserva","Puedes cubrir el gasto sin recurrir inmediatamente a una nueva deuda.","green",120],
+["💳 Buscar crédito inmediatamente","Obtienes liquidez, pero agregas una nueva obligación.","orange",60]
+]
+},
+
+{
+icon:"📱",
+tipo:"FRAUDE DIGITAL",
+titulo:"Te llega un mensaje sospechoso",
+texto:"Dice que ganaste un premio y te pide un código recibido por SMS.",
+opciones:[
+["🛡️ Verificar","Evitas entregar información sin confirmar primero quién está detrás del mensaje.","green",120],
+["👆 Compartir el código","Podrías exponer información que debería mantenerse privada.","pink",20]
+]
+},
+
+{
+icon:"🎣",
+tipo:"INVERSIÓN SOSPECHOSA",
+titulo:"Te ofrecen duplicar tu dinero",
+texto:"Prometen resultados rápidos y casi sin riesgo.",
+opciones:[
+["🔎 Investigar","Compruebas quién ofrece el producto y cuáles son sus riesgos.","cyan",120],
+["🚀 Depositar inmediatamente","Podrías asumir un riesgo que no comprendiste.","pink",20]
+]
+},
+
+{
+icon:"🏠",
+tipo:"INDEPENDENCIA",
+titulo:"Quieres mudarte",
+texto:"El alquiler parece accesible, pero todavía no calculaste servicios, alimentación y transporte.",
+opciones:[
+["🧮 Calcular el costo total","Consideras los gastos recurrentes antes de comprometerte.","green",100],
+["🚀 Mudarte primero","Podrías descubrir gastos adicionales después.","orange",40]
+]
+},
+
+{
+icon:"🏪",
+tipo:"EMPRENDIMIENTO",
+titulo:"Tu pequeño negocio empieza a vender",
+texto:"Ahora tienes ingresos del negocio y también gastos personales.",
+opciones:[
+["📊 Separar las finanzas","Puedes identificar mejor ingresos, costos y resultados del negocio.","cyan",100],
+["💰 Mezclar todo","Será más difícil saber cuánto realmente gana el negocio.","orange",40]
+]
+},
+
+{
+icon:"🎓",
+tipo:"EDUCACIÓN",
+titulo:"Te ofrecen financiar una especialización",
+texto:"El programa podría ayudarte profesionalmente, pero tendrás que asumir pagos.",
+opciones:[
+["🔎 Comparar costo y capacidad de pago","Evalúas la decisión completa antes de asumir la obligación.","cyan",100],
+["⚡ Mirar solo el beneficio","Podrías subestimar el impacto de los pagos.","orange",50]
+]
+}
+
+];
+
+
+/* =========================================================
+   EFECTO MARIPOSA
+========================================================= */
+
+const mariposaData = [
+
+{
+icon:"💳",
+titulo:"Una compra pequeña",
+decision:"Usas crédito sin revisar la fecha de pago.",
+chain:[
+"Compra",
+"Fecha de pago",
+"Posible mora",
+"Posibles consecuencias",
+"Necesidad de reorganizar"
+],
+texto:"Una decisión pequeña no determina automáticamente tu futuro, pero puede formar parte de una cadena de situaciones que vale la pena anticipar."
+},
+
+{
+icon:"💰",
+titulo:"Una pequeña separación",
+decision:"Cada semana separas una cantidad que puedes sostener.",
+chain:[
+"Separar",
+"Repetir",
+"Crear hábito",
+"Mayor organización",
+"Más opciones"
+],
+texto:"La repetición de una decisión puede ayudarte a construir un hábito y una reserva con el tiempo."
+},
+
+{
+icon:"🚨",
+titulo:"Una emergencia",
+decision:"No tienes una reserva cuando aparece un gasto inesperado.",
+chain:[
+"Emergencia",
+"Falta de liquidez",
+"Buscar alternativas",
+"Evaluar costos",
+"Reorganizar"
+],
+texto:"Una reserva no evita las emergencias, pero puede darte una alternativa adicional cuando aparece un gasto inesperado."
+},
+
+{
+icon:"🔎",
+titulo:"Comparar antes de contratar",
+decision:"Revisas varias opciones antes de aceptar un producto financiero.",
+chain:[
+"Comparar",
+"Entender costos",
+"Elegir informado",
+"Planificar pagos",
+"Organizar"
+],
+texto:"Comparar no garantiza un resultado determinado, pero permite tomar la decisión con más información."
+},
+
+{
+icon:"📱",
+titulo:"Un mensaje sospechoso",
+decision:"Recibes un enlace urgente y decides verificar antes de ingresar datos.",
+chain:[
+"Mensaje",
+"Verificar",
+"No entregar datos",
+"Reducir exposición",
+"Proteger información"
+],
+texto:"Una pausa de unos minutos puede servir para verificar la autenticidad de una comunicación antes de entregar información."
+},
+
+{
+icon:"📈",
+titulo:"Invertir sin entender",
+decision:"Te interesa una inversión porque promete una ganancia elevada.",
+chain:[
+"Promesa",
+"Riesgo",
+"Información",
+"Comparación",
+"Decisión"
+],
+texto:"La rentabilidad esperada y el riesgo deben analizarse juntos. Una promesa no garantiza un resultado."
+}
+
+];
+
+
+/* =========================================================
+   UTILIDADES
+========================================================= */
 
 function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2600);
+
+const t=document.getElementById('toast');
+
+t.textContent=msg;
+
+t.classList.add('show');
+
+setTimeout(
+()=>t.classList.remove('show'),
+2600
+);
+
 }
-function ir(p){ S.pantalla=p; render(); window.scrollTo(0,0); }
-function completarAccion(xp=100, ahorro=0){
-  S.xp+=xp; S.ahorro_total+=ahorro; S.racha+=1;
-  if(S.xp>=500){ S.nivel+=1; S.xp-=500; }
+
+
+function ir(p){
+
+S.pantalla=p;
+
+render();
+
+window.scrollTo(0,0);
+
 }
+
+
+function escapar(txt){
+
+return String(txt)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function completarAccion(xp=100,ahorro=0){
+
+S.xp+=xp;
+
+S.ahorro_total+=ahorro;
+
+S.racha+=1;
+
+S.decisiones+=1;
+
+while(S.xp>=500){
+
+S.nivel+=1;
+
+S.xp-=500;
+
+S.logros+=1;
+
+toast("⭐ ¡Subiste de nivel!");
+
+}
+
+}
+
+
 function header(){
-  return `<div class="row" style="align-items:flex-start">
-    <div><div class="logo">FU<span>TU</span>RO</div><div class="tagline">Tu vida, tu elección</div></div>
-    <div style="text-align:right;font-weight:800;color:#ff9d42;font-size:15px">🔥 ${S.racha} días</div>
-  </div><br>`;
+
+return `
+<div class="row" style="align-items:flex-start">
+
+<div>
+
+<div class="logo">
+FU<span>TU</span>RO
+</div>
+
+<div class="tagline">
+Tu vida, tu elección
+</div>
+
+</div>
+
+<div style="
+text-align:right;
+font-weight:800;
+color:#ff9d42;
+font-size:15px
+">
+
+🔥 ${S.racha} días
+
+</div>
+
+</div>
+
+<br>
+`;
+
 }
+
+
 function nav(){
-  return `<div class="nav">${navOpts.map(([ic,name,dest])=>
-    `<button class="${S.pantalla===dest?'active':''}" onclick="ir('${dest}')"><span style="font-size:19px">${ic}</span><span>${name}</span></button>`
-  ).join('')}</div>`;
+
+return `
+<div class="nav">
+
+${navOpts.map(
+([ic,name,dest])=>`
+
+<button
+class="${S.pantalla===dest?'active':''}"
+onclick="ir('${dest}')"
+>
+
+<span style="font-size:19px">${ic}</span>
+
+<span>${name}</span>
+
+</button>
+
+`
+).join('')}
+
+</div>
+`;
+
 }
+
+
+/* =========================================================
+   ONBOARDING
+========================================================= */
 
 function screenOnboarding(){
-  return `<br><br>
-  <div style="text-align:center">
-    <div style="font-size:60px;margin-bottom:8px">🚀</div>
-    <div class="logo" style="font-size:42px">FU<span>TU</span>RO</div>
-    <div style="color:#9bb0cc;font-size:15px;margin-top:4px">Tu vida, tu elección</div>
-  </div><br>
-  <div class="hero">
-    <div class="hero-kicker">UNA DECISIÓN PUEDE CAMBIAR TU RUMBO</div>
-    <div class="hero-title">Tienes <span>21 años.</span><br>Tu futuro acaba de comenzar.</div>
-    <div class="hero-text">No necesitas saber exactamente cómo será tu vida. Solo necesitas empezar a construir las opciones que quieres tener mañana.</div>
-  </div>
-  <div class="card" style="text-align:center">
-    <div style="font-size:42px">👤</div>
-    <h2>¿Quieres conocer a tu YO del FUTURO?</h2>
-    <p class="small-muted">Descubre qué puedes empezar a construir desde hoy.</p>
-    <button class="btn" onclick="ir('ahorro')">✨ CONOCERLO →</button>
-  </div>`;
+
+return `
+
+<br><br>
+
+<div style="text-align:center">
+
+<div style="font-size:60px;margin-bottom:8px">
+🚀
+</div>
+
+<div class="logo" style="font-size:42px">
+FU<span>TU</span>RO
+</div>
+
+<div style="
+color:#9bb0cc;
+font-size:15px;
+margin-top:4px
+">
+Tu vida, tu elección
+</div>
+
+</div>
+
+<br>
+
+<div class="hero">
+
+<div class="hero-kicker">
+UNA DECISIÓN PUEDE CAMBIAR TU RUMBO
+</div>
+
+<div class="hero-title">
+Tienes <span>21 años.</span><br>
+Tu futuro acaba de comenzar.
+</div>
+
+<div class="hero-text">
+
+No necesitas saber exactamente cómo será tu vida.
+
+Solo necesitas empezar a construir las opciones que quieres tener mañana.
+
+</div>
+
+</div>
+
+<div class="card" style="text-align:center">
+
+<div style="font-size:42px">
+👤
+</div>
+
+<h2>
+¿Quieres conocer a tu YO del FUTURO?
+</h2>
+
+<p class="small-muted">
+Descubre qué puedes empezar a construir desde hoy.
+</p>
+
+<button class="btn" onclick="ir('ahorro')">
+✨ CONOCERLO →
+</button>
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   AHORRO
+========================================================= */
+
 function screenAhorro(){
-  return header()+`
-  <div class="page-title">Pero antes...</div>
-  <div class="page-subtitle">¿Cuánto puedes guardar esta semana?</div>
-  <div class="row">${[5,10,20].map(c=>`<button class="btn" onclick="elegirAhorro(${c})">S/ ${c}</button>`).join('')}</div>
-  <br>
-  <label class="small-muted">O escribe otro monto</label>
-  <input id="otroMonto" class="field" type="number" min="1" value="10" step="5">
-  <button class="btn" onclick="elegirAhorro(document.getElementById('otroMonto').value*1)">EMPEZAR CON ESTE MONTO →</button>`;
+
+return header()+`
+
+<div class="page-title">
+Pero antes...
+</div>
+
+<div class="page-subtitle">
+¿Cuánto puedes guardar esta semana?
+</div>
+
+<div class="row">
+
+${[5,10,20].map(
+c=>`
+<button
+class="btn"
+onclick="elegirAhorro(${c})"
+>
+S/ ${c}
+</button>
+`
+).join('')}
+
+</div>
+
+<br>
+
+<label class="small-muted">
+O escribe otro monto
+</label>
+
+<input
+id="otroMonto"
+class="field"
+type="number"
+min="1"
+value="10"
+step="5"
+>
+
+<button
+class="btn"
+onclick="
+elegirAhorro(
+document.getElementById('otroMonto').value*1
+)
+"
+>
+EMPEZAR CON ESTE MONTO →
+</button>
+
+`;
+
 }
-function elegirAhorro(c){ S.ahorro_semana=c; S.ahorro_total+=c; S.xp+=100; S.meta+=5; ir('inicio'); }
+
+
+function elegirAhorro(c){
+
+if(!c || c<=0){
+
+toast("Ingresa un monto válido.");
+
+return;
+
+}
+
+S.ahorro_semana=c;
+
+S.ahorro_total+=c;
+
+S.xp+=100;
+
+S.meta+=5;
+
+ir('inicio');
+
+}
+
+
+/* =========================================================
+   INICIO
+========================================================= */
 
 function screenInicio(){
-  const progreso = Math.min(S.meta,100);
-  return header()+`
-  <div class="hero">
-    <div class="hero-kicker">TU YO DEL FUTURO</div>
-    <div class="hero-title">Tu futuro acaba de <span>comenzar.</span></div>
-    <div class="hero-text">Cada pequeña decisión que tomas hoy puede darte más opciones mañana.</div>
-  </div>
-  <div class="row">
-    <div class="card"><div class="metric">🔥 ${S.racha}</div><div class="metric-label">DÍAS DE RACHA</div></div>
-    <div class="card"><div class="metric">⭐ ${S.nivel}</div><div class="metric-label">NIVEL</div></div>
-    <div class="card"><div class="metric">💰 S/${S.ahorro_total}</div><div class="metric-label">AHORRO ACUMULADO</div></div>
-  </div>
-  <div class="row" style="align-items:stretch">
-    <div class="card" style="text-align:center;flex:1">
-      <div class="avatar">🧑‍🚀</div><h3>Constructor de libertad</h3><span class="badge">NIVEL ${S.nivel}</span>
-    </div>
-    <div class="card card-blue" style="flex:2">
-      <div style="font-size:13px;color:#75aaff;font-weight:800">TU META</div>
-      <div style="font-size:23px;font-weight:900;margin-top:6px">Construir opciones para mi futuro</div>
-      <div class="progress-container"><div class="progress-bar" style="width:${progreso}%"></div></div>
-      <div class="row"><span class="small-muted">Progreso</span><strong style="text-align:right">${progreso}%</strong></div>
-    </div>
-  </div>
-  <div class="page-title" style="font-size:22px">🎯 Misión de hoy</div>
-  <div class="card card-orange">
-    <div style="color:#ffad62;font-size:12px;font-weight:900;letter-spacing:1px">RETO S/5</div>
-    <h2>Encuentra S/5 que normalmente gastarías.</h2>
-    <p class="small-muted">No se trata de dejar de vivir hoy. Se trata de demostrarte que puedes elegir.</p>
-  </div>
-  <button class="btn" onclick="misionInicio()">🔥 HACER MISIÓN</button><br><br>
-  <button class="btn btn-outline" onclick="ir('stories')">📖 VER MI STORY DE HOY</button>`;
+
+const progreso=Math.min(S.meta,100);
+
+const camino=Math.round(
+(S.camino_completadas_count||0) /
+caminoData.length * 100
+);
+
+return header()+`
+
+<div class="hero">
+
+<div class="hero-kicker">
+TU YO DEL FUTURO
+</div>
+
+<div class="hero-title">
+Tu futuro acaba de <span>comenzar.</span>
+</div>
+
+<div class="hero-text">
+
+Cada pequeña decisión que tomas hoy puede darte más opciones mañana.
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="card">
+
+<div class="metric">
+🔥 ${S.racha}
+</div>
+
+<div class="metric-label">
+DÍAS DE RACHA
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="metric">
+⭐ ${S.nivel}
+</div>
+
+<div class="metric-label">
+NIVEL
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="metric">
+💰 S/${S.ahorro_total}
+</div>
+
+<div class="metric-label">
+AHORRO ACUMULADO
+</div>
+
+</div>
+
+</div>
+
+
+<div class="row" style="align-items:stretch">
+
+<div class="card" style="text-align:center;flex:1">
+
+<div class="avatar">
+🧑‍🚀
+</div>
+
+<h3>
+Constructor de libertad
+</h3>
+
+<span class="badge">
+NIVEL ${S.nivel}
+</span>
+
+</div>
+
+
+<div class="card card-blue" style="flex:2">
+
+<div style="
+font-size:13px;
+color:#75aaff;
+font-weight:800
+">
+TU META
+</div>
+
+<div style="
+font-size:23px;
+font-weight:900;
+margin-top:6px
+">
+Construir opciones para mi futuro
+</div>
+
+<div class="progress-container">
+
+<div
+class="progress-bar"
+style="width:${progreso}%"
+></div>
+
+</div>
+
+<div class="row">
+
+<span class="small-muted">
+Progreso
+</span>
+
+<strong style="text-align:right">
+${progreso}%
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="page-title" style="font-size:22px">
+🎯 Misión de hoy
+</div>
+
+<div class="card card-orange">
+
+<div style="
+color:#ffad62;
+font-size:12px;
+font-weight:900;
+letter-spacing:1px
+">
+RETO S/5
+</div>
+
+<h2>
+Encuentra S/5 que normalmente gastarías.
+</h2>
+
+<p class="small-muted">
+
+No se trata de dejar de vivir hoy.
+
+Se trata de demostrarte que puedes elegir.
+
+</p>
+
+</div>
+
+<button class="btn" onclick="misionInicio()">
+🔥 HACER MISIÓN
+</button>
+
+<br><br>
+
+<button
+class="btn btn-outline"
+onclick="ir('stories')"
+>
+📖 VER MI STORY DE HOY
+</button>
+
+
+<div class="page-title" style="font-size:22px;margin-top:28px">
+🧭 Tu camino financiero
+</div>
+
+<div class="card card-purple">
+
+<div style="font-size:38px">
+🧭
+</div>
+
+<h2>
+Construye tu historia financiera
+</h2>
+
+<p class="small-muted">
+
+Desde tu primer sueldo hasta tu jubilación, cada etapa presenta decisiones que pueden ayudarte a entender mejor tu vida financiera.
+
+</p>
+
+<button
+class="btn"
+onclick="ir('camino')"
+>
+EXPLORAR MI CAMINO →
+</button>
+
+</div>
+
+`;
+
 }
+
+
 function misionInicio(){
-  completarAccion(100,5); S.misiones_completadas+=1; S.logros+=1;
-  toast("¡Misión completada! +100 XP · S/5 guardados · 🔥 Racha aumentada"); render();
+
+completarAccion(100,5);
+
+S.misiones_completadas+=1;
+
+S.logros+=1;
+
+toast(
+"¡Misión completada! +100 XP · S/5 guardados · 🔥 Racha aumentada"
+);
+
+render();
+
 }
+
+
+/* =========================================================
+   STORIES
+========================================================= */
 
 function screenStories(){
-  return header()+`
-  <div class="page-title">📖 STORIES</div>
-  <div class="page-subtitle">Tus decisiones de hoy también cuentan.</div>
-  <div class="story">
-    <div>
-      <div class="story-label">HOY · 10:42 AM</div><br>
-      <div style="font-size:50px">💸</div>
-      <div class="story-question">Te sobraron S/10.</div>
-      <p class="small-muted" style="font-size:15px">Podrías gastarlos ahora. O podrías convertirlos en una decisión para tu futuro.</p>
-    </div>
-    <div><strong>¿Qué elegiría tu YO DEL FUTURO?</strong></div>
-  </div><br>
-  <div class="row">
-    <button class="btn btn-outline" onclick="toast('Hoy los gastaste. No pasa nada. FUTURO no busca castigarte: busca ayudarte a decidir.')">🛍️ GASTAR LOS S/10</button>
-    <button class="btn" onclick="guardarStory()">🔥 GUARDAR S/10</button>
-  </div><br>
-  <div class="card"><span class="badge">💡 APRENDIZAJE</span>
-  <p>Ahorrar no siempre requiere grandes cantidades. La primera meta es construir el hábito de decidir.</p></div>`;
+
+return header()+`
+
+<div class="page-title">
+📖 STORIES
+</div>
+
+<div class="page-subtitle">
+Tus decisiones de hoy también cuentan.
+</div>
+
+
+<div class="story">
+
+<div>
+
+<div class="story-label">
+HOY · 10:42 AM
+</div>
+
+<br>
+
+<div style="font-size:50px">
+💸
+</div>
+
+<div class="story-question">
+Te sobraron S/10.
+</div>
+
+<p class="small-muted" style="font-size:15px">
+
+Podrías gastarlos ahora.
+
+O podrías convertirlos en una decisión para tu futuro.
+
+</p>
+
+</div>
+
+<div>
+
+<strong>
+¿Qué elegiría tu YO DEL FUTURO?
+</strong>
+
+</div>
+
+</div>
+
+
+<br>
+
+<div class="row">
+
+<button
+class="btn btn-outline"
+onclick="
+toast('Hoy los gastaste. No pasa nada. FUTURO no busca castigarte: busca ayudarte a decidir.')
+"
+>
+🛍️ GASTAR LOS S/10
+</button>
+
+<button
+class="btn"
+onclick="guardarStory()"
+>
+🔥 GUARDAR S/10
+</button>
+
+</div>
+
+
+<br>
+
+<div class="card">
+
+<span class="badge">
+💡 APRENDIZAJE
+</span>
+
+<p>
+Ahorrar no siempre requiere grandes cantidades.
+
+La primera meta es construir el hábito de decidir.
+
+</p>
+
+</div>
+
+
+<div class="page-title" style="font-size:22px">
+⚡ Más situaciones de tu vida
+</div>
+
+<div class="card card-blue">
+
+<p class="small-muted">
+
+Tu vida financiera no será solamente ahorro.
+
+También aparecerán créditos, cuotas, emergencias, cambios de trabajo, independencia, fraudes, inversiones y decisiones familiares.
+
+</p>
+
+<button
+class="btn"
+onclick="ir('eventos')"
+>
+EXPLORAR EVENTOS →
+</button>
+
+</div>
+
+`;
+
 }
+
+
 function guardarStory(){
-  completarAccion(100,10); S.stories_completadas+=1; S.logros+=1;
-  toast("¡Elegiste guardar! +100 FUTURO XP · +S/10 · 🔥 Racha mantenida"); render();
+
+completarAccion(100,10);
+
+S.stories_completadas+=1;
+
+S.logros+=1;
+
+toast(
+"¡Elegiste guardar! +100 FUTURO XP · +S/10 · 🔥 Racha mantenida"
+);
+
+render();
+
 }
+
+
+/* =========================================================
+   MISIONES
+========================================================= */
 
 function screenMisiones(){
-  return header()+`
-  <div class="page-title">🎯 MISIÓN DE HOY</div>
-  <div class="page-subtitle">No son tareas. Son pequeñas decisiones que construyen hábitos.</div>
-  ${misionesData.map(([ic,tit,desc,xp,ah],i)=>`
-  <div class="card">
-    <div style="font-size:32px">${ic}</div><h3>${tit}</h3>
-    <p class="small-muted">${desc}</p>
-    <span class="badge">+${xp} XP</span>${ah?`<span class="badge badge-orange">+S/${ah}</span>`:""}
-  </div>
-  <button class="btn" onclick="completarMision(${i})">COMPLETAR MISIÓN · ${tit}</button><br><br>`).join('')}`;
+
+return header()+`
+
+<div class="page-title">
+🎯 MISIÓN DE HOY
+</div>
+
+<div class="page-subtitle">
+No son tareas. Son pequeñas decisiones que construyen hábitos.
+</div>
+
+${misionesData.map(
+([ic,tit,desc,xp,ah],i)=>`
+
+<div class="card">
+
+<div style="font-size:32px">
+${ic}
+</div>
+
+<h3>
+${tit}
+</h3>
+
+<p class="small-muted">
+${desc}
+</p>
+
+<span class="badge">
++${xp} XP
+</span>
+
+${ah?
+`
+<span class="badge badge-orange">
++S/${ah}
+</span>
+`
+:""}
+
+</div>
+
+<button
+class="btn"
+onclick="completarMision(${i})"
+>
+COMPLETAR MISIÓN · ${tit}
+</button>
+
+<br><br>
+
+`
+).join('')}
+
+
+<div class="card card-purple">
+
+<h3>
+🧠 XP por aprender
+</h3>
+
+<p class="small-muted">
+
+En FUTURO también ganas experiencia por comparar, analizar riesgos, organizar tus pagos y reconocer situaciones financieras.
+
+</p>
+
+</div>
+
+`;
+
 }
+
+
 function completarMision(i){
-  const [,tit,,xp,ah]=misionesData[i];
-  completarAccion(xp,ah); S.misiones_completadas+=1;
-  toast(`¡Misión completada! +${xp} XP`); render();
+
+const [,tit,,xp,ah]=misionesData[i];
+
+completarAccion(xp,ah);
+
+S.misiones_completadas+=1;
+
+toast(
+`¡Misión completada! +${xp} XP`
+);
+
+render();
+
 }
+
+
+/* =========================================================
+   FUTURO AI
+========================================================= */
 
 function screenAI(){
-  return header()+`
-  <div class="page-title">🤖 FUTURO AI</div>
-  <div class="page-subtitle">Tu compañero para pensar tus decisiones financieras.</div>
-  <div class="card card-purple"><div style="font-size:38px">🤖</div><h2>Hola. Soy FUTURO.</h2>
-  <p>No estoy aquí para decirte qué hacer. Estoy aquí para ayudarte a ver tus opciones.</p></div>
-  <div class="chat-user">Quiero salir con mis amigos pero también quiero ahorrar.</div>
-  <div class="chat-ai">Perfecto. No tienes que elegir entre vivir hoy y pensar en mañana. 🎉<br><br>Podemos buscar un equilibrio.<br><br><strong>Plan de hoy:</strong> S/35 para salir · S/10 para tu futuro.</div>
-  <div class="chat-user">Me quiero comprar unas zapatillas de S/300.</div>
-  <div class="chat-ai">¿Quieres ver qué pasa si las compras hoy o si esperas 30 días?<br><br>Puedo ayudarte a comparar escenarios.</div>
-  <br><div id="aiExtra"></div>
-  <input id="aiInput" class="field" placeholder="Ej.: Quiero ahorrar S/100 este mes...">
-  <button class="btn" onclick="preguntarAI()">Enviar</button>
-  <div class="alert alert-info">Demo de IA: en esta versión las respuestas son simuladas. La integración con un modelo de IA puede añadirse posteriormente.</div>`;
+
+return header()+`
+
+<div class="page-title">
+🤖 FUTURO AI
+</div>
+
+<div class="page-subtitle">
+Tu compañero para pensar tus decisiones financieras.
+</div>
+
+
+<div class="card card-purple">
+
+<div style="font-size:38px">
+🤖
+</div>
+
+<h2>
+Hola. Soy FUTURO.
+</h2>
+
+<p>
+
+No estoy aquí para decirte qué hacer.
+
+Estoy aquí para ayudarte a ver tus opciones.
+
+</p>
+
+</div>
+
+
+<div class="chat-user">
+Quiero salir con mis amigos pero también quiero ahorrar.
+</div>
+
+<div class="chat-ai">
+
+Perfecto.
+
+No tienes que elegir entre vivir hoy y pensar en mañana. 🎉
+
+<br><br>
+
+Podemos buscar un equilibrio.
+
+<br><br>
+
+<strong>Plan de hoy:</strong>
+
+S/35 para salir · S/10 para tu futuro.
+
+</div>
+
+
+<div class="chat-user">
+Me quiero comprar unas zapatillas de S/300.
+</div>
+
+<div class="chat-ai">
+
+¿Quieres ver qué pasa si las compras hoy o si esperas 30 días?
+
+<br><br>
+
+Puedo ayudarte a comparar escenarios.
+
+</div>
+
+
+<div id="aiExtra">
+
+${S.ai_mensajes.map(
+m=>`
+
+<div class="chat-user">
+${escapar(m.usuario)}
+</div>
+
+<div class="chat-ai">
+${m.respuesta}
+</div>
+
+`
+).join('')}
+
+</div>
+
+
+<input
+id="aiInput"
+class="field"
+placeholder="Ej.: Tengo varias cuotas y no sé cómo organizarlas..."
+>
+
+<button
+class="btn"
+onclick="preguntarAI()"
+>
+Enviar
+</button>
+
+
+<div class="alert alert-info">
+
+FUTURO AI es una herramienta educativa.
+
+No sustituye la información contractual, asesoría profesional ni las decisiones de la persona.
+
+</div>
+
+`;
+
 }
+
+
+function respuestaAI(v){
+
+const t=v.toLowerCase();
+
+
+if(
+t.includes("mora") ||
+t.includes("atras") ||
+t.includes("cuota") ||
+t.includes("pago")
+){
+
+return `
+⚠️ Primero identifica qué obligación tienes y revisa la fecha, monto y condiciones aplicables.
+
+Si ya existe un atraso, conviene revisar la situación y contactar a la entidad para conocer las alternativas disponibles.
+
+<br><br>
+
+<strong>Idea FUTURO:</strong>
+
+una deuda no desaparece por ignorarla. Organizarla temprano permite entender mejor tus opciones.
+`;
+
+}
+
+
+if(
+t.includes("tarjeta") ||
+t.includes("credito") ||
+t.includes("crédito")
+){
+
+return `
+💳 Antes de usar crédito, revisa cuánto pagarás realmente, la cuota, el plazo, los costos y la fecha de pago.
+
+<br><br>
+
+Una cuota que parece pequeña puede extenderse durante muchos meses.
+
+<strong>Pregunta clave:</strong>
+
+¿Puedo asumir esta obligación incluso si mis ingresos cambian?
+`;
+
+}
+
+
+if(
+t.includes("ahorro") ||
+t.includes("guardar")
+){
+
+return `
+🌱 Podemos empezar por convertir tu intención en una acción concreta.
+
+Por ejemplo:
+
+<br><br>
+
+<strong>
+¿Cuánto puedes separar de forma sostenible?
+</strong>
+
+<br><br>
+
+Después podemos convertirlo en una meta semanal y observar qué ocurre con el tiempo.
+
+No necesitas empezar perfecto. Necesitas empezar de forma realista.
+`;
+
+}
+
+
+if(
+t.includes("estafa") ||
+t.includes("fraude") ||
+t.includes("mensaje") ||
+t.includes("link") ||
+t.includes("enlace")
+){
+
+return `
+🛡️ Si un mensaje te pide claves, códigos o información sensible con urgencia, detente.
+
+<br><br>
+
+No ingreses los datos desde el enlace recibido.
+
+Verifica la información utilizando un canal oficial de la entidad.
+
+<br><br>
+
+<strong>
+Regla FUTURO: pausa → verifica → decide.
+</strong>
+`;
+
+}
+
+
+if(
+t.includes("invert") ||
+t.includes("inversión") ||
+t.includes("inversion")
+){
+
+return `
+📈 Antes de invertir, entiende qué estás comprando, qué riesgos existen, cuánto tiempo piensas mantenerlo y qué costos pueden existir.
+
+<br><br>
+
+Una rentabilidad prometida no significa que el resultado esté garantizado.
+
+<strong>
+Primero entiende. Después decide.
+</strong>
+`;
+
+}
+
+
+if(
+t.includes("presupuesto") ||
+t.includes("gasto")
+){
+
+return `
+📊 Empieza separando tres cosas:
+
+<br>
+
+1. Gastos necesarios.
+<br>
+2. Gastos que puedes ajustar.
+<br>
+3. Metas o ahorro.
+
+<br>
+
+Así puedes observar dónde tienes margen sin convertir el presupuesto en un castigo.
+`;
+
+}
+
+
+return `
+💡 Pensemos juntos.
+
+No existe una respuesta financiera universal.
+
+Primero podemos identificar:
+
+<br><br>
+
+<strong>
+1.</strong> Qué quieres lograr.
+
+<br>
+
+<strong>
+2.</strong> Qué recursos tienes.
+
+<br>
+
+<strong>
+3.</strong> Qué obligación asumirías.
+
+<br>
+
+<strong>
+4.</strong> Qué riesgos existen.
+
+<br><br>
+
+Después puedes comparar tus alternativas.
+`;
+
+}
+
+
 function preguntarAI(){
-  const v=document.getElementById('aiInput').value.trim();
-  if(!v) return;
-  document.getElementById('aiExtra').innerHTML+=`
-  <div class="chat-user">${v.replace(/</g,'&lt;')}</div>
-  <div class="chat-ai">💡 Pensemos juntos en tus opciones.<br><br>Si quieres ahorrar S/${S.ahorro_semana} por semana, primero podemos revisar cuánto representa al mes y qué pequeñas decisiones podrían ayudarte.</div>`;
-  document.getElementById('aiInput').value='';
+
+const input=document.getElementById('aiInput');
+
+if(!input)return;
+
+const v=input.value.trim();
+
+if(!v)return;
+
+const respuesta=respuestaAI(v);
+
+S.ai_mensajes.push({
+
+usuario:v,
+
+respuesta:respuesta
+
+});
+
+S.decisiones+=1;
+
+S.xp+=25;
+
+toast("+25 XP · Buena pregunta financiera");
+
+render();
+
 }
+
+
+/* =========================================================
+   VIDA — HUB
+========================================================= */
 
 function screenVida(){
-  const s = S._semanas||52;
-  const total = S.ahorro_semana*s;
-  return header()+`
-  <div class="page-title">🌅 VIDA PARALELA</div>
-  <div class="page-subtitle">No podemos conocer exactamente tu futuro. Pero podemos explorar tus decisiones.</div>
-  <label class="small-muted">¿Cuántas semanas quieres imaginar? (${s})</label>
-  <input type="range" min="4" max="104" value="${s}" style="width:100%" oninput="S._semanas=this.value*1; render()">
-  <div class="row" style="align-items:stretch">
-    <div class="card card-orange"><div style="font-size:36px">🛍️</div><h2>YO DE HOY</h2>
-      <p class="small-muted">Gasto adicional de S/${S.ahorro_semana} cada semana.</p>
-      <div class="big-number">S/0</div><p class="small-muted">El dinero se va en pequeñas decisiones.</p></div>
-    <div class="card card-blue"><div style="font-size:36px">🚀</div><h2>YO QUE EMPIEZA A AHORRAR</h2>
-      <p class="small-muted">Guarda S/${S.ahorro_semana} cada semana.</p>
-      <div class="big-number">S/${total.toLocaleString('es-PE')}</div><p class="small-muted">Dinero acumulado en ${s} semanas.</p></div>
-  </div>
-  <div class="card"><h3>🌱 ¿Qué cambió?</h3>
-  <p>No necesariamente tu salario. No necesariamente tu edad. No necesariamente tu vida.</p>
-  <p><strong>Cambió una decisión repetida.</strong></p></div>
-  <div class="alert alert-warn">Estos escenarios son ilustrativos. No representan una promesa de rentabilidad ni predicen cómo será tu situación futura.</div>`;
+
+const s=S._semanas||52;
+
+const total=S.ahorro_semana*s;
+
+return header()+`
+
+<div class="page-title">
+🌅 VIDA
+</div>
+
+<div class="page-subtitle">
+
+No podemos conocer exactamente tu futuro.
+
+Pero podemos explorar decisiones, etapas y situaciones que podrían aparecer a lo largo de la vida.
+
+</div>
+
+
+<div class="card card-blue">
+
+<div style="font-size:42px">
+🧭
+</div>
+
+<h2>
+Mi Camino Financiero
+</h2>
+
+<p class="small-muted">
+
+Recorre desde tu primer sueldo hasta la jubilación.
+
+En cada etapa tendrás que tomar una decisión.
+
+</p>
+
+<button
+class="btn"
+onclick="ir('camino')"
+>
+EMPEZAR CAMINO →
+</button>
+
+</div>
+
+
+<div class="card card-purple">
+
+<div style="font-size:42px">
+🦋
+</div>
+
+<h2>
+Efecto Mariposa Financiero
+</h2>
+
+<p class="small-muted">
+
+Descubre cómo una pequeña decisión puede formar parte de una cadena de situaciones futuras.
+
+No es una predicción.
+
+Es una forma de pensar en consecuencias posibles.
+
+</p>
+
+<button
+class="btn"
+onclick="ir('mariposa')"
+>
+VER EFECTOS →
+</button>
+
+</div>
+
+
+<div class="card card-orange">
+
+<div style="font-size:42px">
+⚡
+</div>
+
+<h2>
+Eventos de vida
+</h2>
+
+<p class="small-muted">
+
+Primer sueldo, crédito, mora, emergencia, independencia, fraude, inversión, emprendimiento y mucho más.
+
+</p>
+
+<button
+class="btn"
+onclick="ir('eventos')"
+>
+VIVIR UN ESCENARIO →
+</button>
+
+</div>
+
+
+<div class="page-title" style="font-size:22px">
+🌱 Vida Paralela
+</div>
+
+
+<label class="small-muted">
+¿Cuántas semanas quieres imaginar? (${s})
+</label>
+
+<input
+type="range"
+min="4"
+max="104"
+value="${s}"
+style="width:100%"
+oninput="S._semanas=this.value*1;render()"
+>
+
+
+<div class="row" style="align-items:stretch">
+
+<div class="card card-orange">
+
+<div style="font-size:36px">
+🛍️
+</div>
+
+<h2>
+YO DE HOY
+</h2>
+
+<p class="small-muted">
+Gasto adicional de S/${S.ahorro_semana} cada semana.
+</p>
+
+<div class="big-number">
+S/0
+</div>
+
+<p class="small-muted">
+El dinero se va en pequeñas decisiones.
+</p>
+
+</div>
+
+
+<div class="card card-blue">
+
+<div style="font-size:36px">
+🚀
+</div>
+
+<h2>
+YO QUE EMPIEZA A AHORRAR
+</h2>
+
+<p class="small-muted">
+Guarda S/${S.ahorro_semana} cada semana.
+</p>
+
+<div class="big-number">
+S/${total.toLocaleString('es-PE')}
+</div>
+
+<p class="small-muted">
+Dinero acumulado en ${s} semanas.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🌱 ¿Qué cambió?
+</h3>
+
+<p>
+No necesariamente tu salario.
+
+No necesariamente tu edad.
+
+No necesariamente tu vida.
+</p>
+
+<p>
+<strong>
+Cambió una decisión repetida.
+</strong>
+</p>
+
+</div>
+
+
+<div class="alert alert-warn">
+
+Estos escenarios son ilustrativos.
+
+No representan una promesa de rentabilidad ni predicen cómo será tu situación futura.
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   MI CAMINO FINANCIERO
+========================================================= */
+
+function screenCamino(){
+
+const actual=Math.min(
+S.camino_etapa,
+caminoData.length-1
+);
+
+const progreso=Math.round(
+(S.camino_completadas.length/caminoData.length)*100
+);
+
+const etapa=caminoData[actual];
+
+return header()+`
+
+<div class="page-title">
+🧭 MI CAMINO FINANCIERO
+</div>
+
+<div class="page-subtitle">
+
+Tu vida financiera no ocurre en un solo día.
+
+Es una secuencia de decisiones.
+
+</div>
+
+
+<div class="card card-purple">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+">
+
+<div>
+
+<div style="
+font-size:11px;
+font-weight:900;
+color:#ff75c4;
+letter-spacing:1px
+">
+PROGRESO DEL CAMINO
+</div>
+
+<div style="
+font-size:28px;
+font-weight:900;
+margin-top:4px
+">
+${progreso}%
+</div>
+
+</div>
+
+<div style="font-size:43px">
+🧭
+</div>
+
+</div>
+
+<div class="progress-container">
+
+<div
+class="progress-bar"
+style="width:${progreso}%"
+></div>
+
+</div>
+
+<p class="small-muted">
+
+${S.camino_completadas.length} de ${caminoData.length} etapas exploradas.
+
+</p>
+
+</div>
+
+
+<div class="event-card">
+
+<div class="event-icon">
+${etapa.icon}
+</div>
+
+<div class="event-type">
+ETAPA ${actual+1} · ${caminoData.length}
+</div>
+
+<h2>
+${etapa.titulo}
+</h2>
+
+<p class="small-muted">
+${etapa.sub}
+</p>
+
+<p style="
+line-height:1.65;
+color:#d0c7df
+">
+${etapa.texto}
+</p>
+
+<div class="alert alert-info">
+
+<strong>
+Tu decisión:
+</strong>
+
+<br>
+
+No existe una respuesta universal.
+
+La app te muestra qué aprendizaje está detrás de cada alternativa.
+
+</div>
+
+
+<div class="choice-grid">
+
+${etapa.choices.map(
+([txt,label,color],i)=>`
+
+<button
+class="choice-btn ${color}"
+onclick="elegirCamino(${actual},${i})"
+>
+
+${txt}
+
+</button>
+
+`
+).join('')}
+
+</div>
+
+</div>
+
+
+<div class="page-title" style="font-size:21px">
+📍 Todas las etapas
+</div>
+
+
+${caminoData.map(
+(c,i)=>{
+
+const done=S.camino_completadas.includes(i);
+
+const locked=i>Math.max(
+0,
+S.camino_etapa
+);
+
+return `
+
+<div
+class="
+path-card
+${done?'done':''}
+${locked?'locked':''}
+${i===caminoData.length-1?'path-last':''}
+"
+>
+
+<div style="
+display:flex;
+gap:13px;
+align-items:flex-start
+">
+
+<div class="path-number">
+
+${done?"✓":c.icon}
+
+</div>
+
+<div style="flex:1">
+
+<div style="
+font-size:11px;
+font-weight:900;
+color:${done?'#7cf0bb':'#a99cc9'};
+letter-spacing:.7px
+">
+
+ETAPA ${i+1}
+
+</div>
+
+<h3 style="margin-top:3px">
+${c.titulo}
+</h3>
+
+<div class="small-muted">
+${c.sub}
+</div>
+
+</div>
+
+</div>
+
+${i===S.camino_etapa?
+`
+<div style="
+margin-top:12px;
+color:#7eefff;
+font-size:11px;
+font-weight:800
+">
+← ESTÁS AQUÍ
+</div>
+`
+:""}
+
+</div>
+
+`;
+
+}
+).join('')}
+
+
+<div class="alert alert-info">
+
+💡 <strong>Importante:</strong>
+
+el camino no pretende predecir tu vida.
+
+Te permite practicar decisiones financieras antes de encontrarte con situaciones reales.
+
+</div>
+
+`;
+
+
+}
+
+
+function elegirCamino(etapaIndex,opcion){
+
+if(S.camino_completadas.includes(etapaIndex)){
+
+toast("Esta etapa ya fue explorada.");
+
+return;
+
+}
+
+const etapa=caminoData[etapaIndex];
+
+S.camino_completadas.push(etapaIndex);
+
+S.camino_completadas.sort(
+(a,b)=>a-b
+);
+
+const puntos=opcion===0?70:110;
+
+completarAccion(puntos,0);
+
+S.camino_etapa=Math.min(
+etapaIndex+1,
+caminoData.length-1
+);
+
+toast(
+`+${puntos} XP · ${etapa.titulo} completado`
+);
+
+setTimeout(()=>{
+
+alert(
+"💡 APRENDIZAJE\n\n"+
+etapa.aprendizaje+
+"\n\nFUTURO no castiga una elección. Te ayuda a entenderla."
+);
+
+render();
+
+},200);
+
+}
+
+
+/* =========================================================
+   EFECTO MARIPOSA
+========================================================= */
+
+function screenMariposa(){
+
+const item=
+mariposaData[
+S._mariposaActual % mariposaData.length
+];
+
+return header()+`
+
+<div class="page-title">
+🦋 EFECTO MARIPOSA
+</div>
+
+<div class="page-subtitle">
+
+Pequeñas decisiones pueden formar parte de cadenas de situaciones.
+
+Aquí no buscamos predecir.
+
+Buscamos aprender a anticipar.
+
+</div>
+
+
+<div class="butterfly">
+
+<div style="font-size:54px">
+${item.icon}
+</div>
+
+<div style="
+color:#ff75c4;
+font-size:10px;
+font-weight:900;
+letter-spacing:2px;
+margin-top:10px
+">
+UNA DECISIÓN
+</div>
+
+<h2>
+${item.titulo}
+</h2>
+
+<p class="small-muted">
+${item.decision}
+</p>
+
+
+<div class="chain">
+
+${item.chain.map(
+(x,i)=>`
+
+<div class="chain-step">
+
+<div style="
+font-size:10px;
+color:#8f84a9;
+font-weight:900
+">
+PASO ${i+1}
+</div>
+
+<div style="
+margin-top:5px;
+font-weight:800;
+font-size:12px
+">
+${x}
+</div>
+
+</div>
+
+${i<item.chain.length-1?
+`
+<div class="chain-arrow">
+→
+</div>
+`
+:""}
+
+`
+).join('')}
+
+</div>
+
+
+<div class="result-card">
+
+<strong>
+🧠 ¿Qué debes llevarte?
+</strong>
+
+<p class="small-muted">
+${item.texto}
+</p>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<span class="badge">
+🦋 IDEA CLAVE
+</span>
+
+<h3>
+No es destino. Es conciencia.
+</h3>
+
+<p class="small-muted">
+
+Una decisión financiera no garantiza un resultado futuro.
+
+Pero pensar en posibles consecuencias puede ayudarte a tomar decisiones más informadas.
+
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="siguienteMariposa()"
+>
+🦋 VER OTRA SITUACIÓN
+</button>
+
+
+<br><br>
+
+
+<button
+class="btn btn-outline"
+onclick="ir('eventos')"
+>
+⚡ EXPLORAR EVENTOS DE VIDA
+</button>
+
+`;
+
+}
+
+
+function siguienteMariposa(){
+
+S._mariposaActual+=1;
+
+S.mariposa_completadas+=1;
+
+S.xp+=50;
+
+S.decisiones+=1;
+
+toast("+50 XP · Nueva cadena explorada");
+
+render();
+
+}
+
+
+/* =========================================================
+   EVENTOS DE VIDA
+========================================================= */
+
+function screenEventos(){
+
+const item=
+eventosData[
+S._eventoActual % eventosData.length
+];
+
+return header()+`
+
+<div class="page-title">
+⚡ EVENTOS DE VIDA
+</div>
+
+<div class="page-subtitle">
+
+La vida cambia.
+
+Tu situación financiera también.
+
+Practica antes de que ocurra.
+
+</div>
+
+
+<div class="event-card">
+
+<div class="event-icon">
+${item.icon}
+</div>
+
+<div class="event-type">
+${item.tipo}
+</div>
+
+<h2>
+${item.titulo}
+</h2>
+
+<p style="
+color:#d1c8df;
+line-height:1.65
+">
+${item.texto}
+</p>
+
+
+<div style="margin-top:18px">
+
+<strong>
+¿Qué harías?
+</strong>
+
+</div>
+
+
+<div class="choice-grid">
+
+${item.opciones.map(
+(o,i)=>`
+
+<button
+class="choice-btn ${o[2]}"
+onclick="resolverEvento(${i})"
+>
+
+<div style="
+font-size:14px;
+margin-bottom:5px
+">
+${o[0]}
+</div>
+
+<div style="
+font-size:10px;
+color:#9589ab;
+font-weight:600
+">
+Toca para explorar esta alternativa
+</div>
+
+</button>
+
+`
+).join('')}
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<span class="badge">
+⚡ EVENTOS COMPLETADOS
+</span>
+
+<div class="big-number">
+${S.eventos_completados}
+</div>
+
+<p class="small-muted">
+
+Cada escenario explorado suma experiencia porque aprender también es una forma de avanzar.
+
+</p>
+
+</div>
+
+
+<button
+class="btn btn-outline"
+onclick="siguienteEvento()"
+>
+🔄 CAMBIAR EVENTO
+</button>
+
+
+<br><br>
+
+
+<div class="alert alert-warn">
+
+Las consecuencias mostradas son educativas e ilustrativas.
+
+En situaciones reales pueden depender del producto, contrato, entidad, legislación y circunstancias particulares.
+
+</div>
+
+`;
+
+}
+
+
+function resolverEvento(opcion){
+
+const item=
+eventosData[
+S._eventoActual % eventosData.length
+];
+
+const selected=item.opciones[opcion];
+
+S.eventos_completados+=1;
+
+completarAccion(
+selected[3],
+0
+);
+
+const result=document.createElement("div");
+
+result.className="result-card";
+
+result.innerHTML=`
+
+<strong>
+${selected[0]}
+</strong>
+
+<p class="small-muted">
+${selected[1]}
+</p>
+
+<div class="consequence">
+
+<div class="consequence-icon">
+💡
+</div>
+
+<div>
+<strong>
+Aprendizaje
+</strong>
+
+<div class="small-muted" style="margin-top:3px">
+
+La decisión no determina automáticamente tu futuro.
+
+La idea es aprender a identificar riesgos, costos y alternativas antes de decidir.
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+const app=document.getElementById("app");
+
+const old=app.querySelector(".event-card");
+
+if(old){
+
+old.appendChild(result);
+
+}
+
+toast(
+`+${selected[3]} XP · Escenario explorado`
+);
+
+setTimeout(
+()=>{
+S._eventoActual+=1;
+render();
+},
+1300
+);
+
+}
+
+
+function siguienteEvento(){
+
+S._eventoActual+=1;
+
+render();
+
+}
+
+
+/* =========================================================
+   SIMULADOR
+========================================================= */
 
 function drawChart(aporte,semanas){
-  const w=680,h=220,pad=30;
-  const total=aporte*semanas;
-  const pts=[]; const N=Math.min(semanas,60);
-  for(let i=0;i<=N;i++){ const s=Math.round(i*semanas/N);
-    const x=pad+(w-2*pad)*(s/semanas); const y=h-pad-(h-2*pad)*(s*aporte/total||0);
-    pts.push(`${x},${y}`);
-  }
-  return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:220px">
-  <polyline points="${pts.join(' ')} ${w-pad},${h-pad} ${pad},${h-pad}" fill="rgba(23,119,255,.25)" stroke="none"/>
-  <polyline points="${pts.join(' ')}" fill="none" stroke="#5ca8ff" stroke-width="3"/>
-  </svg>`;
+
+const w=680;
+
+const h=220;
+
+const pad=30;
+
+const total=aporte*semanas;
+
+const pts=[];
+
+const N=Math.min(semanas,60);
+
+for(let i=0;i<=N;i++){
+
+const s=Math.round(
+i*semanas/N
+);
+
+const x=
+pad+
+(w-2*pad)*
+(s/semanas);
+
+const y=
+h-pad-
+(h-2*pad)*
+(
+s*aporte/total||0
+);
+
+pts.push(`${x},${y}`);
+
 }
+
+return `
+
+<svg
+viewBox="0 0 ${w} ${h}"
+style="width:100%;height:220px"
+>
+
+<polyline
+points="${pts.join(' ')} ${w-pad},${h-pad} ${pad},${h-pad}"
+fill="rgba(23,119,255,.25)"
+stroke="none"
+/>
+
+<polyline
+points="${pts.join(' ')}"
+fill="none"
+stroke="#5ca8ff"
+stroke-width="3"
+/>
+
+</svg>
+
+`;
+
+}
+
+
 function screenSimulador(){
-  const aporte = Math.max(1, S._aporte||S.ahorro_semana||10);
-  const semanas = Math.max(1, S._sim_semanas||52);
-  const total = aporte*semanas;
-  const mensual = aporte*4;
-  const anual = aporte*52;
-  const meses = Math.max(1, Math.round(semanas/4.33));
 
-  return header()+`
-  <section class="sim-hero">
-    <div class="sim-icon">📊</div>
-    <div class="sim-kicker">EXPLORA TU FUTURO</div>
-    <div class="sim-title">¿Qué pasa si <span>empiezas hoy?</span></div>
-    <div class="sim-sub">
-      Juega con el monto y el tiempo. Mira cómo tus pequeñas decisiones se acumulan.
-    </div>
-  </section>
+const aporte=
+Math.max(
+1,
+S._aporte||
+S.ahorro_semana||
+10
+);
 
-  <div class="sim-input-card">
-    <div class="sim-label-row">
-      <label class="sim-label" for="simAporte">💰 ¿Cuánto guardarías cada semana?</label>
-      <div class="sim-value">S/${aporte}</div>
-    </div>
-    <input id="simAporte" class="sim-range" type="range" min="1" max="200" step="1"
-      value="${aporte}"
-      oninput="S._aporte=this.value*1;render()">
-    <div class="sim-presets">
-      ${[5,10,20,50].map(v=>`
-        <button class="sim-preset ${aporte===v?'active':''}"
-          onclick="S._aporte=${v};render()">S/${v}</button>`).join('')}
-    </div>
-  </div>
+const semanas=
+Math.max(
+1,
+S._sim_semanas||
+52
+);
 
-  <div class="sim-input-card">
-    <div class="sim-label-row">
-      <label class="sim-label" for="simSemanas">🗓️ ¿Durante cuánto tiempo?</label>
-      <div class="sim-value">${semanas} sem.</div>
-    </div>
-    <input id="simSemanas" class="sim-range" type="range" min="4" max="104" step="4"
-      value="${semanas}"
-      oninput="S._sim_semanas=this.value*1;render()">
-    <div class="sim-presets">
-      ${[[12,"3 meses"],[26,"6 meses"],[52,"1 año"],[104,"2 años"]].map(([v,l])=>`
-        <button class="sim-preset ${semanas===v?'active':''}"
-          onclick="S._sim_semanas=${v};render()">${l}</button>`).join('')}
-    </div>
-  </div>
+const total=
+aporte*semanas;
 
-  <div class="sim-total">
-    <div class="sim-total-label">AHORRO ACUMULADO ILUSTRATIVO</div>
-    <div class="sim-total-number">S/${total.toLocaleString('es-PE')}</div>
-    <div class="sim-total-copy">
-      Guardando S/${aporte} cada semana durante ${semanas} semanas.
-    </div>
+const mensual=
+aporte*4;
 
-    <div class="sim-stats">
-      <div class="sim-stat">
-        <strong>S/${mensual.toLocaleString('es-PE')}</strong>
-        <span>aprox. cada 4 semanas</span>
-      </div>
-      <div class="sim-stat">
-        <strong>S/${anual.toLocaleString('es-PE')}</strong>
-        <span>si mantienes 52 semanas</span>
-      </div>
-      <div class="sim-stat">
-        <strong>${meses} meses</strong>
-        <span>periodo elegido</span>
-      </div>
-    </div>
-  </div>
+const anual=
+aporte*52;
 
-  <div class="sim-chart-card">
-    <div class="sim-section-title">📈 Así crece tu acumulado</div>
-    <div class="sim-section-sub">Sin rentabilidad: solo aportes repetidos.</div>
-    <div class="sim-chart-wrap">${drawChart(aporte,semanas)}</div>
-  </div>
+const meses=
+Math.max(
+1,
+Math.round(semanas/4.33)
+);
 
-  <div class="sim-insight">
-    <strong>💡 La idea no es ahorrar perfecto.</strong>
-    <div class="small-muted" style="margin-top:5px">
-      Es descubrir qué cantidad podrías convertir en un hábito y qué opciones podría darte con el tiempo.
-    </div>
-  </div>
+return header()+`
 
-  <div class="alert alert-info">
-    Este cálculo es ilustrativo. No incluye rentabilidad, inflación, comisiones ni otros factores.
-  </div>
-  <div class="sim-note">
-    FUTURO no predice tu situación financiera. La simulación sirve para visualizar el efecto de repetir una decisión.
-  </div>`;
+<section class="sim-hero">
+
+<div class="sim-icon">
+📊
+</div>
+
+<div class="sim-kicker">
+EXPLORA TU FUTURO
+</div>
+
+<div class="sim-title">
+¿Qué pasa si <span>empiezas hoy?</span>
+</div>
+
+<div class="sim-sub">
+
+Juega con el monto y el tiempo.
+
+Mira cómo tus pequeñas decisiones se acumulan.
+
+</div>
+
+</section>
+
+
+<div class="sim-input-card">
+
+<div class="sim-label-row">
+
+<label class="sim-label">
+💰 ¿Cuánto guardarías cada semana?
+</label>
+
+<div class="sim-value">
+S/${aporte}
+</div>
+
+</div>
+
+<input
+id="simAporte"
+class="sim-range"
+type="range"
+min="1"
+max="200"
+step="1"
+value="${aporte}"
+oninput="S._aporte=this.value*1;render()"
+>
+
+
+<div class="sim-presets">
+
+${[5,10,20,50].map(
+v=>`
+
+<button
+class="sim-preset ${aporte===v?'active':''}"
+onclick="S._aporte=${v};render()"
+>
+S/${v}
+</button>
+
+`
+).join('')}
+
+</div>
+
+</div>
+
+
+<div class="sim-input-card">
+
+<div class="sim-label-row">
+
+<label class="sim-label">
+🗓️ ¿Durante cuánto tiempo?
+</label>
+
+<div class="sim-value">
+${semanas} sem.
+</div>
+
+</div>
+
+<input
+id="simSemanas"
+class="sim-range"
+type="range"
+min="4"
+max="104"
+step="4"
+value="${semanas}"
+oninput="S._sim_semanas=this.value*1;render()"
+>
+
+
+<div class="sim-presets">
+
+${[
+[12,"3 meses"],
+[26,"6 meses"],
+[52,"1 año"],
+[104,"2 años"]
+].map(
+([v,l])=>`
+
+<button
+class="sim-preset ${semanas===v?'active':''}"
+onclick="S._sim_semanas=${v};render()"
+>
+${l}
+</button>
+
+`
+).join('')}
+
+</div>
+
+</div>
+
+
+<div class="sim-total">
+
+<div class="sim-total-label">
+AHORRO ACUMULADO ILUSTRATIVO
+</div>
+
+<div class="sim-total-number">
+S/${total.toLocaleString('es-PE')}
+</div>
+
+<div class="sim-total-copy">
+
+Guardando S/${aporte} cada semana durante ${semanas} semanas.
+
+</div>
+
+
+<div class="sim-stats">
+
+<div class="sim-stat">
+
+<strong>
+S/${mensual.toLocaleString('es-PE')}
+</strong>
+
+<span>
+aprox. cada 4 semanas
+</span>
+
+</div>
+
+
+<div class="sim-stat">
+
+<strong>
+S/${anual.toLocaleString('es-PE')}
+</strong>
+
+<span>
+si mantienes 52 semanas
+</span>
+
+</div>
+
+
+<div class="sim-stat">
+
+<strong>
+${meses} meses
+</strong>
+
+<span>
+periodo elegido
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="sim-chart-card">
+
+<div class="sim-section-title">
+📈 Así crece tu acumulado
+</div>
+
+<div class="sim-section-sub">
+Sin rentabilidad: solo aportes repetidos.
+</div>
+
+<div class="sim-chart-wrap">
+${drawChart(aporte,semanas)}
+</div>
+
+</div>
+
+
+<div class="sim-insight">
+
+<strong>
+💡 La idea no es ahorrar perfecto.
+</strong>
+
+<div
+class="small-muted"
+style="margin-top:5px"
+>
+
+Es descubrir qué cantidad podrías convertir en un hábito y qué opciones podría darte con el tiempo.
+
+</div>
+
+</div>
+
+
+<div class="alert alert-info">
+
+Este cálculo es ilustrativo.
+
+No incluye rentabilidad, inflación, comisiones ni otros factores.
+
+</div>
+
+<div class="sim-note">
+
+FUTURO no predice tu situación financiera.
+
+La simulación sirve para visualizar el efecto de repetir una decisión.
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   CÍRCULO
+========================================================= */
 
 function screenCirculo(){
-  const personas=[["🧑‍🚀","Marelyn",12,4],["👩‍🚀","Alex",8,3],["🧑‍💻","Dani",15,6],["👨‍🎓","Luis",4,2]];
-  return header()+`
-  <div class="page-title">👥 MI CÍRCULO</div>
-  <div class="page-subtitle">Construyan el hábito juntos. Sin competir por quién tiene más dinero.</div>
-  ${personas.map(([av,nom,rac,log])=>`
-  <div class="card"><div class="row" style="align-items:center;gap:16px">
-    <div style="font-size:38px">${av}</div>
-    <div style="flex:1"><strong style="font-size:17px">${nom}</strong>
-    <div class="small-muted">🔥 ${rac} días · 🏆 ${log} logros</div></div>
-    <span class="badge">EN RACHA</span>
-  </div></div>`).join('')}
-  <div class="alert alert-ok">En FUTURO no mostramos cuánto dinero tiene cada persona. Compartimos hábitos, rachas y logros.</div>`;
+
+const personas=[
+
+["🧑‍🚀","Marelyn",12,4],
+
+["👩‍🚀","Alex",8,3],
+
+["🧑‍💻","Dani",15,6],
+
+["👨‍🎓","Luis",4,2]
+
+];
+
+return header()+`
+
+<div class="page-title">
+👥 MI CÍRCULO
+</div>
+
+<div class="page-subtitle">
+
+Construyan el hábito juntos.
+
+Sin competir por quién tiene más dinero.
+
+</div>
+
+
+${personas.map(
+([av,nom,rac,log])=>`
+
+<div class="card">
+
+<div
+class="row"
+style="
+align-items:center;
+gap:16px
+"
+>
+
+<div style="font-size:38px">
+${av}
+</div>
+
+<div style="flex:1">
+
+<strong style="font-size:17px">
+${nom}
+</strong>
+
+<div class="small-muted">
+🔥 ${rac} días · 🏆 ${log} logros
+</div>
+
+</div>
+
+<span class="badge">
+EN RACHA
+</span>
+
+</div>
+
+</div>
+
+`
+).join('')}
+
+
+<div class="alert alert-ok">
+
+En FUTURO no mostramos cuánto dinero tiene cada persona.
+
+Compartimos hábitos, rachas y logros.
+
+</div>
+
+`;
+
+
 }
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
 
 function screenPerfil(){
-  return header()+`
-  <div class="page-title">👤 MI PERFIL</div>
-  <div class="page-subtitle">Tu FUTURO empieza conociendo lo que quieres.</div>
-  <div class="row" style="align-items:flex-start">
-    <div class="card" style="text-align:center;flex:1">
-      <div class="avatar">🧑‍🚀</div><h2>Mi Yo</h2><span class="badge">NIVEL ${S.nivel}</span>
-    </div>
-    <div style="flex:2">
-      <label class="small-muted">Edad</label>
-      <input id="pEdad" class="field" type="number" min="15" max="70" value="${S.edad}">
-      <label class="small-muted">¿Qué quieres poder elegir en tu futuro?</label>
-      <input id="pMeta" class="field" value="Tener más libertad financiera">
-      <label class="small-muted">¿Cuánto quieres ahorrar semanalmente?</label>
-      <input id="pAhorro" class="field" type="number" min="1" value="${S.ahorro_semana}">
-      <button class="btn" onclick="guardarPerfil()">💾 GUARDAR MI PERFIL</button>
-    </div>
-  </div>
-  <div class="card"><h3>🏆 Tus logros</h3>
-    <span class="badge">🔥 Primera racha</span><span class="badge">💰 Primer ahorro</span>
-    <span class="badge">🎯 Primera misión</span><span class="badge badge-orange">🌅 Pensando en 2040</span>
-  </div>`;
-}
-function guardarPerfil(){
-  S.edad=document.getElementById('pEdad').value*1;
-  S.ahorro_semana=document.getElementById('pAhorro').value*1;
-  toast("¡Perfil actualizado!"); render();
+
+return header()+`
+
+<div class="page-title">
+👤 MI PERFIL
+</div>
+
+<div class="page-subtitle">
+Tu FUTURO empieza conociendo lo que quieres.
+</div>
+
+
+<div class="row" style="align-items:flex-start">
+
+<div class="card" style="text-align:center;flex:1">
+
+<div class="avatar">
+🧑‍🚀
+</div>
+
+<h2>
+Mi Yo
+</h2>
+
+<span class="badge">
+NIVEL ${S.nivel}
+</span>
+
+</div>
+
+
+<div style="flex:2">
+
+<label class="small-muted">
+Edad
+</label>
+
+<input
+id="pEdad"
+class="field"
+type="number"
+min="15"
+max="70"
+value="${S.edad}"
+>
+
+
+<label class="small-muted">
+¿Qué quieres poder elegir en tu futuro?
+</label>
+
+<input
+id="pMeta"
+class="field"
+value="Tener más libertad financiera"
+>
+
+
+<label class="small-muted">
+¿Cuánto quieres ahorrar semanalmente?
+</label>
+
+<input
+id="pAhorro"
+class="field"
+type="number"
+min="1"
+value="${S.ahorro_semana}"
+>
+
+
+<button
+class="btn"
+onclick="guardarPerfil()"
+>
+💾 GUARDAR MI PERFIL
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🏆 Tus logros
+</h3>
+
+<span class="badge">
+🔥 Primera racha
+</span>
+
+<span class="badge">
+💰 Primer ahorro
+</span>
+
+<span class="badge">
+🎯 Primera misión
+</span>
+
+<span class="badge badge-orange">
+🌅 Pensando en 2040
+</span>
+
+${S.camino_completadas.length>=5?
+`
+<span class="badge">
+🧭 Explorador financiero
+</span>
+`
+:""}
+
+${S.eventos_completados>=3?
+`
+<span class="badge">
+⚡ Decisiones en acción
+</span>
+`
+:""}
+
+${S.mariposa_completadas>=3?
+`
+<span class="badge badge-orange">
+🦋 Pensamiento futuro
+</span>
+`
+:""}
+
+</div>
+
+
+<div class="card card-blue">
+
+<h3>
+📊 Mi progreso
+</h3>
+
+<div class="row">
+
+<div>
+
+<div class="metric">
+${S.decisiones}
+</div>
+
+<div class="metric-label">
+DECISIONES EXPLORADAS
+</div>
+
+</div>
+
+
+<div>
+
+<div class="metric">
+${S.eventos_completados}
+</div>
+
+<div class="metric-label">
+EVENTOS
+</div>
+
+</div>
+
+
+<div>
+
+<div class="metric">
+${S.camino_completadas.length}
+</div>
+
+<div class="metric-label">
+ETAPAS
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
 }
 
-function render(){
-  const screens = {onboarding:screenOnboarding, ahorro:screenAhorro, inicio:screenInicio,
-    stories:screenStories, misiones:screenMisiones, ai:screenAI, vida:screenVida,
-    simulador:screenSimulador, circulo:screenCirculo, perfil:screenPerfil};
-  const fn = screens[S.pantalla]||screenInicio;
-  document.getElementById('app').innerHTML = fn() + (S.pantalla==='onboarding'?'':'<div style="height:70px"></div>');
-  document.querySelectorAll('.nav').forEach(n=>n.remove());
-  if(S.pantalla!=='onboarding' && S.pantalla!=='ahorro') document.body.insertAdjacentHTML('beforeend', nav());
-}
+
+function guardarPerfil(){
+
+S.edad=
+document.getElementById('pEdad').value*1;
+
+S.ahorro_semana=
+document.getElementById('pAhorro').value*1;
+
+toast(
+"¡Perfil actualizado!"
+);
+
 render();
+
+}
+
+
+/* =========================================================
+   RENDER PRINCIPAL
+========================================================= */
+
+function render(){
+
+const screens={
+
+onboarding:screenOnboarding,
+
+ahorro:screenAhorro,
+
+inicio:screenInicio,
+
+stories:screenStories,
+
+misiones:screenMisiones,
+
+ai:screenAI,
+
+vida:screenVida,
+
+camino:screenCamino,
+
+mariposa:screenMariposa,
+
+eventos:screenEventos,
+
+simulador:screenSimulador,
+
+circulo:screenCirculo,
+
+perfil:screenPerfil
+
+};
+
+
+const fn=
+screens[S.pantalla]||
+screenInicio;
+
+
+document.getElementById('app').innerHTML=
+
+fn()+
+(
+S.pantalla==='onboarding'
+||
+S.pantalla==='ahorro'
+?
+''
+:
+'<div style="height:70px"></div>'
+);
+
+
+document.querySelectorAll('.nav')
+.forEach(n=>n.remove());
+
+
+if(
+S.pantalla!=='onboarding'
+&&
+S.pantalla!=='ahorro'
+){
+
+document.body.insertAdjacentHTML(
+'beforeend',
+nav()
+);
+
+}
+
+}
+
+
+/* =========================================================
+   INICIO
+========================================================= */
+
+render();
+
 </script>
+
 </body>
 </html>
